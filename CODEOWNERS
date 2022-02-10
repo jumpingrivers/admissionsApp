@@ -1,0 +1,13 @@
+# JR - This defines the maintainer(s) of a repo or the people responsible for different parts thereof.
+# The below line will make csgillespie the owner unless it is overriden with the actual owner.
+
+* @csgillespie @andrew.patterson1 @sjimellor
+
+# More examples:
+#   https://docs.gitlab.com/ee/user/project/code_owners.html#example-codeowners-file
+#
+# All files of a type:
+#   *.Rmd @someone-who-likes-rmd
+#
+# All files in a directory (recursively):
+#   /docs/ @all-docs @another-person
