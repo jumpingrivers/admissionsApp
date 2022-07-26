@@ -5,12 +5,15 @@
 #' @import shiny
 #' @noRd
 app_ui <- function(request) {
-  tagList(
-    # Leave this function for adding external resources
-    golem_add_external_resources(),
-    # Your application UI logic
-    fluidPage(
-      h1("admissionsApp")
+  shiny::tagList(
+    tags$head(
+      golem_add_external_resources()
+    ),
+    shiny::navbarPage(
+      title = "Admissions Data Explorer",
+      mod_line_ui("line_1"),
+      mod_sunburst_ui("sunburst_1"),
+      mod_help_ui("help_1")
     )
   )
 }
@@ -24,14 +27,14 @@ app_ui <- function(request) {
 #' @importFrom golem add_resource_path activate_js favicon bundle_resources
 #' @noRd
 golem_add_external_resources <- function() {
-  add_resource_path(
+  golem::add_resource_path(
     "www",
     app_sys("app/www")
   )
 
   tags$head(
-    favicon(),
-    bundle_resources(
+    golem::favicon(),
+    golem::bundle_resources(
       path = app_sys("app/www"),
       app_title = "admissionsApp"
     )
