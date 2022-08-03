@@ -2,15 +2,16 @@
 #'
 #' @param request Internal parameter for `{shiny}`.
 #'     DO NOT REMOVE.
-#' @import shiny
 #' @noRd
-app_ui <- function(request) {
+app_ui = function(request) {
   shiny::tagList(
-    tags$head(
+    shiny::tags$head(
       golem_add_external_resources()
     ),
     shiny::navbarPage(
-      title = "Admissions Data Explorer",
+      title = title_logo(),
+      windowTitle = "Admissions",
+      theme = litera_theme(),
       mod_line_ui("line_1"),
       mod_sunburst_ui("sunburst_1"),
       mod_help_ui("help_1")
@@ -22,23 +23,44 @@ app_ui <- function(request) {
 #'
 #' This function is internally used to add external
 #' resources inside the Shiny application.
-#'
-#' @import shiny
-#' @importFrom golem add_resource_path activate_js favicon bundle_resources
-#' @noRd
-golem_add_external_resources <- function() {
+golem_add_external_resources = function() {
   golem::add_resource_path(
     "www",
     app_sys("app/www")
   )
 
-  tags$head(
-    golem::favicon(),
-    golem::bundle_resources(
-      path = app_sys("app/www"),
-      app_title = "admissionsApp"
-    )
-    # Add here other external resources
-    # for example, you can add shinyalert::useShinyalert()
+  shiny::tags$head(
+    shiny::tags$link(rel = "icon", type = "image/png", href = "www/favicon.png")
   )
+}
+
+#' Create title logo
+#'
+#' Returns UT logo with correct dimensions for app title.
+title_logo = function() {
+  shiny::div(
+    style = "text-align: justify; width:150;",
+    shiny::tags$img(
+      style = "display: block;
+               margin-left:-20px;
+               margin-top:-10px;
+               margin-bottom:-20px",
+      src = "www/ie_logo.png",
+      width = "170",
+      height = "50",
+      alt = "UT Data"
+    )
+  )
+}
+
+#' Create custom litera theme
+#'
+#' Modify litera theme with custom fonts and colours.
+litera_theme = function() {
+  bslib::bs_theme(
+    bootswatch = "litera",
+    bg = "#FFFFFF", fg = "#000",
+    primary = "#B5302A",
+    base_font = bslib::font_google("Source Serif Pro"),
+    heading_font = bslib::font_google("Josefin Sans", wght = 100))
 }

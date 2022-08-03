@@ -1,6 +1,6 @@
 Package: admissionsApp
 Title: Admissions data application
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person("Jumping", "Rivers", , "info@jumpingrivers.com", role = c("aut", "cre"))
 Description: Admissions data exploration app-as-a-package.
@@ -8,6 +8,7 @@ License: file LICENSE
 Depends: 
     R (>= 4.0)
 Imports: 
+    bslib,
     config (>= 0.3.1),
     golem (>= 0.3.3),
     magrittr,

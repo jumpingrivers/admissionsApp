@@ -7,8 +7,8 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_line_ui <- function(id){
-  ns <- NS(id)
+mod_line_ui = function(id) {
+  ns = shiny::NS(id) # nolint
   shiny::tabPanel(
     "Enrollment",
     shiny::sidebarLayout(
@@ -25,7 +25,7 @@ mod_line_ui <- function(id){
         )
       ),
       shiny::mainPanel(
-        shiny::wellPanel()
+        shiny::wellPanel("Line chart made in {plotly}")
       )
     )
   )
@@ -34,9 +34,9 @@ mod_line_ui <- function(id){
 #' line Server Functions
 #'
 #' @noRd
-mod_line_server <- function(id){
-  moduleServer( id, function(input, output, session){
-    ns <- session$ns
+mod_line_server = function(id) {
+  shiny::moduleServer(id, function(input, output, session) {
+    ns = session$ns # nolint
 
   })
 }

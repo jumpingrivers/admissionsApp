@@ -7,13 +7,13 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_sunburst_ui <- function(id){
-  ns <- NS(id)
+mod_sunburst_ui = function(id) {
+  ns = shiny::NS(id) # nolint
   shiny::tabPanel(
     "Sunburst",
     shiny::fluidRow(
-      shiny::column(width = 6, shiny::wellPanel()),
-      shiny::column(width = 6, shiny::wellPanel())
+      shiny::column(width = 6, shiny::wellPanel("Sunburst widget")),
+      shiny::column(width = 6, shiny::wellPanel("Sunburst table"))
     )
   )
 }
@@ -21,9 +21,9 @@ mod_sunburst_ui <- function(id){
 #' sunburst Server Functions
 #'
 #' @noRd
-mod_sunburst_server <- function(id){
-  moduleServer( id, function(input, output, session){
-    ns <- session$ns
+mod_sunburst_server = function(id) {
+  shiny::moduleServer(id, function(input, output, session) {
+    ns = session$ns # nolint
 
   })
 }
