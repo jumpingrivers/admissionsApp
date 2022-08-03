@@ -8,7 +8,7 @@
 #' within your package. The default, none, returns the root of the app.
 #'
 #' @noRd
-app_sys <- function(...) {
+app_sys = function(...) {
   system.file(..., package = "admissionsApp")
 }
 
@@ -22,7 +22,7 @@ app_sys <- function(...) {
 #' @param file Location of the config file
 #'
 #' @noRd
-get_golem_config <- function(
+get_golem_config = function(
   value,
   config = Sys.getenv(
     "GOLEM_CONFIG_ACTIVE",

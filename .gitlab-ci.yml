@@ -1,10 +1,10 @@
 # Common components, such as stages, pages, default image, mkdocs, pm-check
 include:
-  - project: jumpingrivers/products/prj/common
-    ref: $JR_CI_TEMPLATES_DEFAULT_BRANCH_COMMON
+  - project: jumpingrivers/products/rdev/r-package
+    ref: $JR_CI_TEMPLATES_DEFAULT_BRANCH
     file: /.ci/main.yml
     rules:
-      - if: $CI_PROJECT_PATH != "jumpingrivers/products/prj/common"
+      - if: $CI_PROJECT_PATH != "jumpingrivers/products/rdev/r-package"
   - local: /.ci/main.yml
     rules:
-      - if: $CI_PROJECT_PATH == "jumpingrivers/products/prj/common"
+      - if: $CI_PROJECT_PATH == "jumpingrivers/products/rdev/r-package"
