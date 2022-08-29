@@ -39,3 +39,5 @@ inst/doc
 .jrtemplate.yml
 *.env
 *.swp
+
+.lfsconfig

@@ -1,3 +1,11 @@
+# Values should be 0, unless reasons given
+variables:
+  ALLOWED_WARNINGS: 0
+  ALLOWED_NOTES: 2 # data + file
+  NO_IMPORTS: 0
+  #disable_verify_r_package: "false"
+  #DRAT_PUBLISH: "true"
+
 # Common components, such as stages, pages, default image, mkdocs, pm-check
 include:
   - project: jumpingrivers/products/rdev/r-package
