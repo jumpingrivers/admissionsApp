@@ -10,6 +10,30 @@
     "has_parameters": false
   },
   "packages": {
+    "AsioHeaders": {
+      "Source": "CRAN",
+      "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
+      "description": {
+        "Package": "AsioHeaders",
+        "Type": "Package",
+        "Title": "'Asio' C++ Header Files",
+        "Version": "1.22.1-1",
+        "Date": "2022-06-14",
+        "Author": "Dirk Eddelbuettel",
+        "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
+        "Description": "'Asio' is a cross-platform C++ library for network and low-level\n I/O programming that provides developers with a consistent asynchronous model\n using a modern C++ approach. It is also included in Boost but requires linking\n when used with Boost. Standalone it can be used header-only (provided a recent\n compiler). 'Asio' is written and maintained by Christopher M. Kohlhoff, and\n released under the 'Boost Software License', Version 1.0.",
+        "Copyright": "file inst/COPYRIGHTS",
+        "License": "BSL-1.0",
+        "URL": "https://github.com/eddelbuettel/asioheaders,\nhttps://dirk.eddelbuettel.com/code/asioheaders.html",
+        "BugReports": "https://github.com/eddelbuettel/asioheaders/issues",
+        "NeedsCompilation": "no",
+        "Packaged": "2022-06-14 17:18:17 UTC; edd",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-06-14 17:50:02 UTC",
+        "Encoding": "UTF-8",
+        "Built": "R 4.2.0; ; 2022-06-15 10:57:04 UTC; unix"
+      }
+    },
     "MASS": {
       "Source": "CRAN",
       "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
@@ -259,6 +283,32 @@
         "Built": "R 4.2.0; ; 2022-04-23 00:39:44 UTC; unix"
       }
     },
+    "backports": {
+      "Source": "CRAN",
+      "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
+      "description": {
+        "Package": "backports",
+        "Type": "Package",
+        "Title": "Reimplementations of Functions Introduced Since R-3.0.0",
+        "Version": "1.4.1",
+        "Authors@R": "c(\n    person(\"Michel\", \"Lang\", NULL, \"michellang@gmail.com\",\n      role = c(\"cre\", \"aut\"), comment = c(ORCID = \"0000-0001-9754-0393\")),\n    person(\"R Core Team\", role = \"aut\"))",
+        "Maintainer": "Michel Lang <michellang@gmail.com>",
+        "Description": "\n    Functions introduced or changed since R v3.0.0 are re-implemented in this\n    package. The backports are conditionally exported in order to let R resolve\n    the function name to either the implemented backport, or the respective base\n    version, if available. Package developers can make use of new functions or\n    arguments by selectively importing specific backports to\n    support older installations.",
+        "URL": "https://github.com/r-lib/backports",
+        "BugReports": "https://github.com/r-lib/backports/issues",
+        "License": "GPL-2 | GPL-3",
+        "NeedsCompilation": "yes",
+        "ByteCompile": "yes",
+        "Depends": "R (>= 3.0.0)",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.1.2",
+        "Packaged": "2021-12-13 10:49:30 UTC; michel",
+        "Author": "Michel Lang [cre, aut] (<https://orcid.org/0000-0001-9754-0393>),\n  R Core Team [aut]",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-12-13 11:30:02 UTC",
+        "Built": "R 4.2.0; x86_64-pc-linux-gnu; 2022-04-22 20:08:02 UTC; unix"
+      }
+    },
     "base64enc": {
       "Source": "CRAN",
       "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
@@ -462,6 +512,66 @@
         "Repository": "RSPM",
         "Date/Publication": "2021-04-20 14:20:10 UTC",
         "Built": "R 4.2.0; ; 2022-04-22 20:08:27 UTC; unix"
+      }
+    },
+    "checkmate": {
+      "Source": "CRAN",
+      "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
+      "description": {
+        "Package": "checkmate",
+        "Type": "Package",
+        "Title": "Fast and Versatile Argument Checks",
+        "Description": "Tests and assertions to perform frequent argument checks. A\n    substantial part of the package was written in C to minimize any worries\n    about execution time overhead.",
+        "Version": "2.1.0",
+        "Authors@R": "c(\n    person(\"Michel\", \"Lang\", NULL, \"michellang@gmail.com\",\n      role = c(\"cre\", \"aut\"), comment = c(ORCID = \"0000-0001-9754-0393\")),\n    person(\"Bernd\", \"Bischl\", NULL, \"bernd_bischl@gmx.net\", role = \"ctb\"),\n    person(\"Dénes\", \"Tóth\", NULL, \"toth.denes@kogentum.hu\", role = \"ctb\",\n      comment = c(ORCID = \"0000-0003-4262-3217\"))\n    )",
+        "URL": "https://mllg.github.io/checkmate/,\nhttps://github.com/mllg/checkmate",
+        "URLNote": "https://github.com/mllg/checkmate",
+        "BugReports": "https://github.com/mllg/checkmate/issues",
+        "NeedsCompilation": "yes",
+        "ByteCompile": "yes",
+        "Encoding": "UTF-8",
+        "Depends": "R (>= 3.0.0)",
+        "Imports": "backports (>= 1.1.0), utils",
+        "Suggests": "R6, fastmatch, data.table (>= 1.9.8), devtools, ggplot2,\nknitr, magrittr, microbenchmark, rmarkdown, testthat (>=\n3.0.4), tinytest (>= 1.1.0), tibble",
+        "License": "BSD_3_clause + file LICENSE",
+        "VignetteBuilder": "knitr",
+        "RoxygenNote": "7.1.2",
+        "Collate": "'AssertCollection.R' 'allMissing.R' 'anyInfinite.R'\n'anyMissing.R' 'anyNaN.R' 'asInteger.R' 'assert.R' 'helper.R'\n'makeExpectation.R' 'makeTest.R' 'makeAssertion.R'\n'checkAccess.R' 'checkArray.R' 'checkAtomic.R'\n'checkAtomicVector.R' 'checkCharacter.R' 'checkChoice.R'\n'checkClass.R' 'checkComplex.R' 'checkCount.R'\n'checkDataFrame.R' 'checkDataTable.R' 'checkDate.R'\n'checkDirectoryExists.R' 'checkDisjunct.R' 'checkDouble.R'\n'checkEnvironment.R' 'checkFALSE.R' 'checkFactor.R'\n'checkFileExists.R' 'checkFlag.R' 'checkFormula.R'\n'checkFunction.R' 'checkInt.R' 'checkInteger.R'\n'checkIntegerish.R' 'checkList.R' 'checkLogical.R'\n'checkMatrix.R' 'checkMultiClass.R' 'checkNamed.R'\n'checkNames.R' 'checkNull.R' 'checkNumber.R' 'checkNumeric.R'\n'checkOS.R' 'checkPOSIXct.R' 'checkPathForOutput.R' 'checkR6.R'\n'checkRaw.R' 'checkScalar.R' 'checkScalarNA.R'\n'checkSetEqual.R' 'checkString.R' 'checkSubset.R' 'checkTRUE.R'\n'checkTibble.R' 'checkVector.R' 'coalesce.R' 'isIntegerish.R'\n'matchArg.R' 'qassert.R' 'qassertr.R' 'vname.R' 'wfwl.R'\n'zzz.R'",
+        "Packaged": "2022-04-20 07:14:04 UTC; michel",
+        "Author": "Michel Lang [cre, aut] (<https://orcid.org/0000-0001-9754-0393>),\n  Bernd Bischl [ctb],\n  Dénes Tóth [ctb] (<https://orcid.org/0000-0003-4262-3217>)",
+        "Maintainer": "Michel Lang <michellang@gmail.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-04-21 07:30:05 UTC",
+        "Built": "R 4.2.0; x86_64-pc-linux-gnu; 2022-04-22 20:08:08 UTC; unix"
+      }
+    },
+    "chromote": {
+      "Source": "CRAN",
+      "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
+      "description": {
+        "Package": "chromote",
+        "Title": "Headless Chrome Web Browser Interface",
+        "Version": "0.1.0",
+        "Authors@R": "c(\n      person(\"Winston\", \"Chang\", role = c(\"aut\", \"cre\"), email = \"winston@rstudio.com\"),\n      person(\"Barret\", \"Schloerke\", role = c(\"aut\"), email = \"barret@rstudio.com\"),\n      person(given = \"RStudio\", role = c(\"cph\", \"fnd\"))\n    )",
+        "Description": "An implementation of the 'Chrome DevTools Protocol', for controlling a headless Chrome web browser.",
+        "License": "GPL-2",
+        "Encoding": "UTF-8",
+        "SystemRequirements": "Google Chrome or other Chromium-based browser.\nchromium: chromium (rpm) or chromium-browser (deb)",
+        "Imports": "curl, jsonlite, websocket (>= 1.2.0), processx, R6, later (>=\n1.1.0), promises (>= 1.1.1), magrittr, rlang, fastmap",
+        "Suggests": "testthat (>= 3.0.0), showimage",
+        "RoxygenNote": "7.1.2",
+        "URL": "https://github.com/rstudio/chromote",
+        "BugReports": "https://github.com/rstudio/chromote/issues",
+        "Config/testthat/edition": "3",
+        "Config/Needs/website": "tidyverse/tidytemplate",
+        "Language": "en-US",
+        "NeedsCompilation": "no",
+        "Packaged": "2022-04-15 18:48:57 UTC; barret",
+        "Author": "Winston Chang [aut, cre],\n  Barret Schloerke [aut],\n  RStudio [cph, fnd]",
+        "Maintainer": "Winston Chang <winston@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-04-19 09:02:29 UTC",
+        "Built": "R 4.2.0; ; 2022-04-23 04:07:04 UTC; unix"
       }
     },
     "cli": {
@@ -2020,6 +2130,32 @@
         "Built": "R 4.2.0; ; 2022-04-22 20:08:55 UTC; unix"
       }
     },
+    "pingr": {
+      "Source": "CRAN",
+      "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
+      "description": {
+        "Package": "pingr",
+        "Title": "Check if a Remote Computer is Up",
+        "Version": "2.0.1",
+        "Authors@R": "person(given = \"Gábor\", family = \"Csárdi\", role = c(\"aut\", \"cre\"),\n             email = \"csardi.gabor@gmail.com\")",
+        "Description": "Check if a remote computer is up. It can either\n    just call the system ping command, or check a specified\n    TCP port.",
+        "License": "MIT + file LICENSE",
+        "LazyData": "true",
+        "URL": "https://github.com/r-lib/pingr#readme",
+        "BugReports": "https://github.com/r-lib/pingr/issues",
+        "Suggests": "covr, testthat",
+        "Imports": "processx, utils",
+        "RoxygenNote": "7.1.0.9000",
+        "Encoding": "UTF-8",
+        "NeedsCompilation": "yes",
+        "Packaged": "2020-06-22 14:44:39 UTC; csard",
+        "Author": "Gábor Csárdi [aut, cre]",
+        "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2020-06-22 17:40:03 UTC",
+        "Built": "R 4.2.0; x86_64-pc-linux-gnu; 2022-04-22 21:16:32 UTC; unix"
+      }
+    },
     "pins": {
       "Source": "CRAN",
       "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
@@ -2350,6 +2486,36 @@
         "Built": "R 4.2.0; x86_64-pc-linux-gnu; 2022-06-28 11:01:40 UTC; unix"
       }
     },
+    "rmarkdown": {
+      "Source": "CRAN",
+      "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
+      "description": {
+        "Type": "Package",
+        "Package": "rmarkdown",
+        "Title": "Dynamic Documents for R",
+        "Version": "2.16",
+        "Authors@R": "c(\n    person(\"JJ\", \"Allaire\", , \"jj@rstudio.com\", role = \"aut\"),\n    person(\"Yihui\", \"Xie\", , \"xie@yihui.name\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-0645-5666\")),\n    person(\"Jonathan\", \"McPherson\", , \"jonathan@rstudio.com\", role = \"aut\"),\n    person(\"Javier\", \"Luraschi\", , \"javier@rstudio.com\", role = \"aut\"),\n    person(\"Kevin\", \"Ushey\", , \"kevin@rstudio.com\", role = \"aut\"),\n    person(\"Aron\", \"Atkins\", , \"aron@rstudio.com\", role = \"aut\"),\n    person(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", role = \"aut\"),\n    person(\"Joe\", \"Cheng\", , \"joe@rstudio.com\", role = \"aut\"),\n    person(\"Winston\", \"Chang\", , \"winston@rstudio.com\", role = \"aut\"),\n    person(\"Richard\", \"Iannone\", , \"rich@rstudio.com\", role = \"aut\", comment = c(ORCID = \"0000-0003-3925-190X\")),\n    person(\"Andrew\", \"Dunning\", role = \"ctb\", comment = c(ORCID = \"0000-0003-0464-5036\")),\n    person(\"Atsushi\", \"Yasumoto\", role = c(\"ctb\", \"cph\"), comment = c(ORCID = \"0000-0002-8335-495X\", cph = \"Number sections Lua filter\")),\n    person(\"Barret\", \"Schloerke\", role = \"ctb\"),\n    person(\"Carson\", \"Sievert\", role = \"ctb\", comment = c(ORCID = \"0000-0002-4958-2844\")), \n    person(\"Christophe\", \"Dervieux\", role = \"ctb\"),\n    person(\"Devon\", \"Ryan\", , \"dpryan79@gmail.com\", role = \"ctb\", comment = c(ORCID = \"0000-0002-8549-0971\")),\n    person(\"Frederik\", \"Aust\", , \"frederik.aust@uni-koeln.de\", role = \"ctb\", comment = c(ORCID = \"0000-0003-4900-788X\")),\n    person(\"Jeff\", \"Allen\", , \"jeff@rstudio.com\", role = \"ctb\"), \n    person(\"JooYoung\", \"Seo\", role = \"ctb\", comment = c(ORCID = \"0000-0002-4064-6012\")),\n    person(\"Malcolm\", \"Barrett\", role = \"ctb\"),\n    person(\"Rob\", \"Hyndman\", , \"Rob.Hyndman@monash.edu\", role = \"ctb\"),\n    person(\"Romain\", \"Lesur\", role = \"ctb\"),\n    person(\"Roy\", \"Storey\", role = \"ctb\"),\n    person(\"Ruben\", \"Arslan\", , \"ruben.arslan@uni-goettingen.de\", role = \"ctb\"),\n    person(\"Sergio\", \"Oller\", role = \"ctb\"),\n    person(, \"RStudio, PBC\", role = \"cph\"),\n    person(, \"jQuery UI contributors\", role = c(\"ctb\", \"cph\"), comment = \"jQuery UI library; authors listed in inst/rmd/h/jqueryui-AUTHORS.txt\"),\n    person(\"Mark\", \"Otto\", role = \"ctb\", comment = \"Bootstrap library\"),\n    person(\"Jacob\", \"Thornton\", role = \"ctb\", comment = \"Bootstrap library\"),\n    person(, \"Bootstrap contributors\", role = \"ctb\", comment = \"Bootstrap library\"),\n    person(, \"Twitter, Inc\", role = \"cph\", comment = \"Bootstrap library\"),\n    person(\"Alexander\", \"Farkas\", role = c(\"ctb\", \"cph\"), comment = \"html5shiv library\"),\n    person(\"Scott\", \"Jehl\", role = c(\"ctb\", \"cph\"), comment = \"Respond.js library\"),\n    person(\"Ivan\", \"Sagalaev\", role = c(\"ctb\", \"cph\"), comment = \"highlight.js library\"),\n    person(\"Greg\", \"Franko\", role = c(\"ctb\", \"cph\"), comment = \"tocify library\"),\n    person(\"John\", \"MacFarlane\", role = c(\"ctb\", \"cph\"), comment = \"Pandoc templates\"),\n    person(, \"Google, Inc.\", role = c(\"ctb\", \"cph\"), comment = \"ioslides library\"),\n    person(\"Dave\", \"Raggett\", role = \"ctb\", comment = \"slidy library\"),\n    person(, \"W3C\", role = \"cph\", comment = \"slidy library\"),\n    person(\"Dave\", \"Gandy\", role = c(\"ctb\", \"cph\"), comment = \"Font-Awesome\"),\n    person(\"Ben\", \"Sperry\", role = \"ctb\", comment = \"Ionicons\"),\n    person(, \"Drifty\", role = \"cph\", comment = \"Ionicons\"),\n    person(\"Aidan\", \"Lister\", role = c(\"ctb\", \"cph\"), comment = \"jQuery StickyTabs\"),\n    person(\"Benct Philip\", \"Jonsson\", role = c(\"ctb\", \"cph\"), comment = \"pagebreak Lua filter\"),\n    person(\"Albert\", \"Krewinkel\", role = c(\"ctb\", \"cph\"), comment = \"pagebreak Lua filter\")\n  )",
+        "Maintainer": "Yihui Xie <xie@yihui.name>",
+        "Description": "Convert R Markdown documents into a variety of formats.",
+        "License": "GPL-3",
+        "URL": "https://github.com/rstudio/rmarkdown,\nhttps://pkgs.rstudio.com/rmarkdown/",
+        "BugReports": "https://github.com/rstudio/rmarkdown/issues",
+        "Depends": "R (>= 3.0)",
+        "Imports": "bslib (>= 0.2.5.1), evaluate (>= 0.13), htmltools (>= 0.5.1),\njquerylib, jsonlite, knitr (>= 1.22), methods, stringr (>=\n1.2.0), tinytex (>= 0.31), tools, utils, xfun (>= 0.30), yaml\n(>= 2.1.19)",
+        "Suggests": "digest, dygraphs, fs, rsconnect, downlit (>= 0.4.0), katex\n(>= 1.4.0), sass (>= 0.4.0), shiny (>= 1.6.0), testthat (>=\n3.0.3), tibble, tufte, vctrs, withr (>= 2.4.2)",
+        "VignetteBuilder": "knitr",
+        "Config/Needs/website": "rstudio/quillt, pkgdown",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.2.1",
+        "SystemRequirements": "pandoc (>= 1.14) - http://pandoc.org",
+        "NeedsCompilation": "no",
+        "Packaged": "2022-08-24 18:52:13 UTC; yihui",
+        "Author": "JJ Allaire [aut],\n  Yihui Xie [aut, cre] (<https://orcid.org/0000-0003-0645-5666>),\n  Jonathan McPherson [aut],\n  Javier Luraschi [aut],\n  Kevin Ushey [aut],\n  Aron Atkins [aut],\n  Hadley Wickham [aut],\n  Joe Cheng [aut],\n  Winston Chang [aut],\n  Richard Iannone [aut] (<https://orcid.org/0000-0003-3925-190X>),\n  Andrew Dunning [ctb] (<https://orcid.org/0000-0003-0464-5036>),\n  Atsushi Yasumoto [ctb, cph] (<https://orcid.org/0000-0002-8335-495X>,\n    Number sections Lua filter),\n  Barret Schloerke [ctb],\n  Carson Sievert [ctb] (<https://orcid.org/0000-0002-4958-2844>),\n  Christophe Dervieux [ctb],\n  Devon Ryan [ctb] (<https://orcid.org/0000-0002-8549-0971>),\n  Frederik Aust [ctb] (<https://orcid.org/0000-0003-4900-788X>),\n  Jeff Allen [ctb],\n  JooYoung Seo [ctb] (<https://orcid.org/0000-0002-4064-6012>),\n  Malcolm Barrett [ctb],\n  Rob Hyndman [ctb],\n  Romain Lesur [ctb],\n  Roy Storey [ctb],\n  Ruben Arslan [ctb],\n  Sergio Oller [ctb],\n  RStudio, PBC [cph],\n  jQuery UI contributors [ctb, cph] (jQuery UI library; authors listed in\n    inst/rmd/h/jqueryui-AUTHORS.txt),\n  Mark Otto [ctb] (Bootstrap library),\n  Jacob Thornton [ctb] (Bootstrap library),\n  Bootstrap contributors [ctb] (Bootstrap library),\n  Twitter, Inc [cph] (Bootstrap library),\n  Alexander Farkas [ctb, cph] (html5shiv library),\n  Scott Jehl [ctb, cph] (Respond.js library),\n  Ivan Sagalaev [ctb, cph] (highlight.js library),\n  Greg Franko [ctb, cph] (tocify library),\n  John MacFarlane [ctb, cph] (Pandoc templates),\n  Google, Inc. [ctb, cph] (ioslides library),\n  Dave Raggett [ctb] (slidy library),\n  W3C [cph] (slidy library),\n  Dave Gandy [ctb, cph] (Font-Awesome),\n  Ben Sperry [ctb] (Ionicons),\n  Drifty [cph] (Ionicons),\n  Aidan Lister [ctb, cph] (jQuery StickyTabs),\n  Benct Philip Jonsson [ctb, cph] (pagebreak Lua filter),\n  Albert Krewinkel [ctb, cph] (pagebreak Lua filter)",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-08-24 19:50:02 UTC",
+        "Built": "R 4.2.1; ; 2022-08-26 10:17:47 UTC; unix"
+      }
+    },
     "roxygen2": {
       "Source": "CRAN",
       "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
@@ -2603,6 +2769,38 @@
         "Built": "R 4.2.0; ; 2022-04-22 21:17:04 UTC; unix"
       }
     },
+    "shinytest2": {
+      "Source": "CRAN",
+      "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
+      "description": {
+        "Package": "shinytest2",
+        "Title": "Testing for Shiny Applications",
+        "Version": "0.1.0",
+        "Authors@R": "\n    c(\n        person(\"Barret\", \"Schloerke\", role = c(\"cre\", \"aut\"), email = \"barret@rstudio.com\", comment = c(ORCID = \"0000-0001-9986-114X\")),\n        person(family = \"RStudio\", role = c(\"cph\", \"fnd\")),\n        person(\"Winston\", \"Chang\", role =\"ctb\", email = \"winston@rstudio.com\", comment = \"Original author to rstudio/shinytest\"),\n        person(\"Gábor\", \"Csárdi\", role = \"ctb\", email = \"gabor@rstudio.com\", comment = \"Original author to rstudio/shinytest\"),\n        person(\"Hadley\", \"Wickham\", role = \"ctb\", email = \"hadley@rstudio.com\", comment = \"Original author to rstudio/shinytest\"),\n        person(family = \"Mango Solutions\", role = c(\"cph\", \"ccp\"), comment = \"Original author to rstudio/shinytest\")\n    )",
+        "Description": "Automated unit testing of Shiny applications through a headless 'Chromium' browser.",
+        "License": "MIT + file LICENSE",
+        "Encoding": "UTF-8",
+        "Language": "en-US",
+        "RoxygenNote": "7.1.2",
+        "URL": "https://github.com/rstudio/shinytest2",
+        "BugReports": "https://github.com/rstudio/shinytest2/issues",
+        "VignetteBuilder": "knitr",
+        "Depends": "testthat (>= 3.1.2)",
+        "Imports": "R6 (>= 2.4.0), chromote (>= 0.1.0), fs, callr, crayon, rlang\n(>= 0.3.0), checkmate (>= 2.0.0), ellipsis, httr, jsonlite,\npingr, rmarkdown, shiny, withr",
+        "Suggests": "diffobj, globals (>= 0.14.0), ggplot2, vdiffr (>= 1.0.0),\nplotly, rstudioapi, shinyWidgets, shinytest (>= 1.5.1),\nshinyvalidate (>= 0.1.2), showimage, knitr, usethis",
+        "Config/Needs/check": "rstudio/shiny",
+        "Config/Needs/website": "pkgdown, tidyverse/tidytemplate",
+        "Config/testthat/edition": "3",
+        "Collate": "'R6-helper.R' 'app-driver-chromote.R' 'app-driver-dir.R'\n'app-driver-expect-download.R' 'app-driver-expect-js.R'\n'app-driver-expect-screenshot.R'\n'app-driver-expect-unique-names.R' 'app-driver-expect-values.R'\n'app-driver-get-log.R' 'app-driver-initialize.R'\n'app-driver-log-message.R' 'app-driver-message.R'\n'app-driver-node.R' 'app-driver-set-inputs.R'\n'app-driver-start.R' 'app-driver-stop.R'\n'app-driver-upload-file.R' 'app-driver-variant.R'\n'app-driver-wait.R' 'app-driver-window.R' 'app-driver.R'\n'chromote-methods.R' 'expect-snapshot.R' 'expr-recurse.R'\n'httr.R' 'migrate.R' 'missing-value.R' 'utils.R' 'platform.R'\n'record-test-unique-name.R' 'record-test.R' 'rstudio.R'\n'save-app.R' 'shiny-browser.R' 'shinytest2-logs.R' 'test-app.R'\n'use.R'",
+        "NeedsCompilation": "no",
+        "Packaged": "2022-04-23 16:22:46 UTC; barret",
+        "Author": "Barret Schloerke [cre, aut] (<https://orcid.org/0000-0001-9986-114X>),\n  RStudio [cph, fnd],\n  Winston Chang [ctb] (Original author to rstudio/shinytest),\n  Gábor Csárdi [ctb] (Original author to rstudio/shinytest),\n  Hadley Wickham [ctb] (Original author to rstudio/shinytest),\n  Mango Solutions [cph, ccp] (Original author to rstudio/shinytest)",
+        "Maintainer": "Barret Schloerke <barret@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-04-27 08:20:02 UTC",
+        "Built": "R 4.2.0; ; 2022-04-28 20:35:18 UTC; unix"
+      }
+    },
     "sourcetools": {
       "Source": "CRAN",
       "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
@@ -2835,6 +3033,32 @@
         "Built": "R 4.2.0; ; 2022-04-22 20:08:53 UTC; unix"
       }
     },
+    "tinytex": {
+      "Source": "CRAN",
+      "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
+      "description": {
+        "Package": "tinytex",
+        "Type": "Package",
+        "Title": "Helper Functions to Install and Maintain TeX Live, and Compile\nLaTeX Documents",
+        "Version": "0.40",
+        "Authors@R": "c(\n  person(\"Yihui\", \"Xie\", role = c(\"aut\", \"cre\", \"cph\"), email = \"xie@yihui.name\", comment = c(ORCID = \"0000-0003-0645-5666\")),\n  person(family = \"RStudio, PBC\", role = \"cph\"),\n  person(\"Christophe\", \"Dervieux\", role = \"ctb\", comment = c(ORCID = \"0000-0003-4474-2498\")),\n  person(\"Devon\", \"Ryan\", role = \"ctb\", email = \"dpryan79@gmail.com\", comment = c(ORCID = \"0000-0002-8549-0971\")),\n  person(\"Ethan\", \"Heinzen\", role = \"ctb\"),\n  person(\"Fernando\", \"Cagua\", role = \"ctb\"),\n  person()\n  )",
+        "Description": "Helper functions to install and maintain the 'LaTeX' distribution\n  named 'TinyTeX' (<https://yihui.org/tinytex/>), a lightweight, cross-platform,\n  portable, and easy-to-maintain version of 'TeX Live'. This package also\n  contains helper functions to compile 'LaTeX' documents, and install missing\n  'LaTeX' packages automatically.",
+        "Imports": "xfun (>= 0.29)",
+        "Suggests": "testit, rstudioapi",
+        "License": "MIT + file LICENSE",
+        "URL": "https://github.com/rstudio/tinytex",
+        "BugReports": "https://github.com/rstudio/tinytex/issues",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.2.0",
+        "NeedsCompilation": "no",
+        "Packaged": "2022-06-15 22:18:40 UTC; yihui",
+        "Author": "Yihui Xie [aut, cre, cph] (<https://orcid.org/0000-0003-0645-5666>),\n  RStudio, PBC [cph],\n  Christophe Dervieux [ctb] (<https://orcid.org/0000-0003-4474-2498>),\n  Devon Ryan [ctb] (<https://orcid.org/0000-0002-8549-0971>),\n  Ethan Heinzen [ctb],\n  Fernando Cagua [ctb]",
+        "Maintainer": "Yihui Xie <xie@yihui.name>",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-06-15 23:10:02 UTC",
+        "Built": "R 4.2.0; ; 2022-06-16 13:04:18 UTC; unix"
+      }
+    },
     "usethis": {
       "Source": "CRAN",
       "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
@@ -2999,6 +3223,34 @@
         "Repository": "RSPM",
         "Date/Publication": "2022-03-16 22:20:04 UTC",
         "Built": "R 4.2.0; ; 2022-04-22 21:16:16 UTC; unix"
+      }
+    },
+    "websocket": {
+      "Source": "CRAN",
+      "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
+      "description": {
+        "Package": "websocket",
+        "Version": "1.4.1",
+        "Title": "'WebSocket' Client Library",
+        "Description": "Provides a 'WebSocket' client interface for R.\n    'WebSocket' is a protocol for low-overhead real-time communication:\n    <https://en.wikipedia.org/wiki/WebSocket>.",
+        "Authors@R": "c(\n    person(\"Winston\", \"Chang\", role = c(\"aut\", \"cre\"), email = \"winston@rstudio.com\"),\n    person(\"Joe\", \"Cheng\", role = \"aut\", email = \"joe@rstudio.com\"),\n    person(\"Alan\", \"Dipert\", role = \"aut\"),\n    person(\"Barbara\", \"Borges\", role = \"aut\"),\n    person(family = \"RStudio\", role = \"cph\"),\n    person(\"Peter\", \"Thorson\", role = c(\"ctb\", \"cph\"), comment = \"WebSocket++ library\"),\n    person(\"René\", \"Nyffenegger\", role = c(\"ctb\", \"cph\"), comment = \"Base 64 library\"),\n    person(\"Micael\", \"Hildenborg\", role = c(\"ctb\", \"cph\"), comment = \"SHA1 library\"),\n    person(family = \"Aladdin Enterprises\", role = \"cph\", comment = \"MD5 library\"),\n    person(\"Bjoern\", \"Hoehrmann\", role = c(\"ctb\", \"cph\"), comment = \"UTF8 Validation library\"))",
+        "License": "GPL-2",
+        "Encoding": "UTF-8",
+        "ByteCompile": "true",
+        "Imports": "R6, later (>= 1.2.0)",
+        "LinkingTo": "cpp11, AsioHeaders, later",
+        "BugReports": "https://github.com/rstudio/websocket/issues",
+        "SystemRequirements": "C++11, GNU make, OpenSSL >= 1.0.2",
+        "RoxygenNote": "7.1.1",
+        "Suggests": "httpuv, testthat, knitr, rmarkdown",
+        "VignetteBuilder": "knitr",
+        "NeedsCompilation": "yes",
+        "Packaged": "2021-08-18 19:46:25 UTC; barret",
+        "Author": "Winston Chang [aut, cre],\n  Joe Cheng [aut],\n  Alan Dipert [aut],\n  Barbara Borges [aut],\n  RStudio [cph],\n  Peter Thorson [ctb, cph] (WebSocket++ library),\n  René Nyffenegger [ctb, cph] (Base 64 library),\n  Micael Hildenborg [ctb, cph] (SHA1 library),\n  Aladdin Enterprises [cph] (MD5 library),\n  Bjoern Hoehrmann [ctb, cph] (UTF8 Validation library)",
+        "Maintainer": "Winston Chang <winston@rstudio.com>",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-08-18 20:30:02 UTC",
+        "Built": "R 4.2.0; x86_64-pc-linux-gnu; 2022-07-12 12:34:09 UTC; unix"
       }
     },
     "whisker": {
@@ -3197,7 +3449,7 @@
       "checksum": "039e35f4f94a12fef3af9b15d48fc4a7"
     },
     ".Rbuildignore": {
-      "checksum": "32e42bc37a8cc47f47181896e267f92a"
+      "checksum": "8093ec61b530a3a964ca4585236052ad"
     },
     "app.R": {
       "checksum": "33c0fc1d3baec31aeec9037297cebcfa"
@@ -3212,7 +3464,7 @@
       "checksum": "63ba8d54b843db4340d767463654d134"
     },
     "DESCRIPTION": {
-      "checksum": "b772c9da7dee1b0f047b5d17e188eb51"
+      "checksum": "b286a35ff05bb6d76dfd8ac8ced5cdad"
     },
     "inst/app/fake_data/daily_enrollment.rds": {
       "checksum": "388870f4dc3062969b7af1bcbcb777c5"
@@ -3352,8 +3604,14 @@
     "tests/testthat/_snaps/calculate_enrollment.md": {
       "checksum": "88798ff90b8f34dbf97bf0f834a1f0c3"
     },
+    "tests/testthat/setup.R": {
+      "checksum": "966ddbc21e28ea3e1c3699249cee9d0a"
+    },
     "tests/testthat/test-calculate_enrollment.R": {
       "checksum": "cd6681ae537cb1c962722154a08e3c0f"
+    },
+    "tests/testthat/test-shinytest2.R": {
+      "checksum": "b701eb20f6de9a1df7709d12d98d38e5"
     }
   },
   "users": null
