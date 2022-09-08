@@ -12,4 +12,4 @@ parsed_enrollment = raw_enrollment %>%
   dplyr::mutate(season = dplyr::if_else(.data$season == 40, "Fall", "Spring"))
 
 board_rsc = pins::board_rsconnect(auth = "rsconnect")
-pins::pin_write(board_rsc, parsed_enrollment, name = "daily_enrollment")
+pins::pin_write(board_rsc, parsed_enrollment, name = "enrollment")
