@@ -12,7 +12,8 @@ mod_sunburst_ui = function(id) {
   shiny::tabPanel(
     "Sunburst",
     shiny::fluidRow(
-      shiny::column(width = 6, shiny::wellPanel("Sunburst widget")),
+      shiny::column(width = 6,
+        utVizSunburst::sunburstOutput(ns("sunbust"))),
       shiny::column(width = 6, shiny::wellPanel("Sunburst table"))
     )
   )
@@ -21,9 +22,13 @@ mod_sunburst_ui = function(id) {
 #' sunburst Server Functions
 #'
 #' @noRd
-mod_sunburst_server = function(id) {
+mod_sunburst_server = function(id, admissions) {
   shiny::moduleServer(id, function(input, output, session) {
     ns = session$ns # nolint
 
+    output$sunbust = utVizSunburst::renderSunburst({
+      utVizSunburst::sunburst(admissions,
+                              steps = c("gpa", "club", "student_type", "outcome", "college"))
+    })
   })
 }

@@ -6,7 +6,7 @@
 get_daily_enrollment = function() {
   pin_user = get_pin_user()
   board_rsc = pins::board_rsconnect()
-  enrollment_path = glue::glue("{pin_user}/daily_enrollment")
+  enrollment_path = glue::glue("{pin_user}/enrollment")
   enrollment = pins::pin_read(board_rsc, enrollment_path)
   return(enrollment)
 }
