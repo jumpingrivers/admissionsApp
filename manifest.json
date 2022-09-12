@@ -4167,7 +4167,7 @@
     "man/add_pct_change.Rd": {
       "checksum": "82bd79251035323c867aa6f49768c77d"
     },
-    "man/admissionsApp-package.Rd": {
+    "man/shinyAdmissions-package.Rd": {
       "checksum": "87b8b19ad537bc04a191a154fc694f6a"
     },
     "man/calculate_enrollment.Rd": {

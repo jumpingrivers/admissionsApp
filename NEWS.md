@@ -1,1 +1,1 @@
-# admissionsApp (development version)
+# shinyAdmissions (development version)

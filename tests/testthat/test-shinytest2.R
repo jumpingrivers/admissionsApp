@@ -2,7 +2,7 @@ library(shinytest2)
 
 testthat::test_that("{shinytest2} recording: Initial app screen", {
   if (interactive()) {
-    myapp = admissionsApp::run_app()
+    myapp = shinyAdmissions::run_app()
     app = AppDriver$new(
       myapp,
       name = "Initial loading screen",

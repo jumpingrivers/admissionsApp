@@ -1,5 +1,5 @@
 default:
-  golem_name: admissionsApp
+  golem_name: shinyAdmissions
   golem_version: 0.0.0.9000
   app_prod: no
 production:

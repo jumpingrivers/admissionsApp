@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(admissionsApp)
+library(shinyAdmissions)
 
-test_check("admissionsApp")
+test_check("shinyAdmissions")
