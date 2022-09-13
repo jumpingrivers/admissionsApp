@@ -1199,7 +1199,7 @@
         "Type": "Package",
         "Package": "dplyr",
         "Title": "A Grammar of Data Manipulation",
-        "Version": "1.0.9",
+        "Version": "1.0.10",
         "Authors@R": "\n    c(person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = c(\"aut\", \"cre\"),\n             email = \"hadley@rstudio.com\",\n             comment = c(ORCID = \"0000-0003-4757-117X\")),\n      person(given = \"Romain\",\n             family = \"François\",\n             role = \"aut\",\n             comment = c(ORCID = \"0000-0002-2444-4226\")),\n      person(given = \"Lionel\",\n             family = \"Henry\",\n             role = \"aut\"),\n      person(given = \"Kirill\",\n             family = \"Müller\",\n             role = \"aut\",\n             comment = c(ORCID = \"0000-0002-1416-3412\")),\n      person(given = \"RStudio\",\n             role = c(\"cph\", \"fnd\")))",
         "Description": "A fast, consistent tool for working with data frame\n    like objects, both in memory and out of memory.",
         "License": "MIT + file LICENSE",
@@ -1211,16 +1211,16 @@
         "VignetteBuilder": "knitr",
         "Encoding": "UTF-8",
         "LazyData": "true",
-        "RoxygenNote": "7.1.2",
+        "RoxygenNote": "7.2.1",
         "Config/testthat/edition": "3",
         "Config/Needs/website": "tidyverse, shiny, pkgdown, tidyverse/tidytemplate",
         "NeedsCompilation": "yes",
-        "Packaged": "2022-04-27 14:20:55 UTC; davis",
+        "Packaged": "2022-08-31 18:31:04 UTC; hadleywickham",
         "Author": "Hadley Wickham [aut, cre] (<https://orcid.org/0000-0003-4757-117X>),\n  Romain François [aut] (<https://orcid.org/0000-0002-2444-4226>),\n  Lionel Henry [aut],\n  Kirill Müller [aut] (<https://orcid.org/0000-0002-1416-3412>),\n  RStudio [cph, fnd]",
         "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
         "Repository": "RSPM",
-        "Date/Publication": "2022-04-28 13:30:02 UTC",
-        "Built": "R 4.2.0; x86_64-pc-linux-gnu; 2022-04-29 11:04:02 UTC; unix"
+        "Date/Publication": "2022-09-01 09:20:06 UTC",
+        "Built": "R 4.2.1; x86_64-pc-linux-gnu; 2022-09-06 14:38:55 UTC; unix"
       }
     },
     "ellipsis": {
@@ -2924,6 +2924,70 @@
         "Built": "R 4.2.0; x86_64-pc-linux-gnu; 2022-04-22 19:53:36 UTC; unix"
       }
     },
+    "reactR": {
+      "Source": "CRAN",
+      "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
+      "GithubRepo": null,
+      "GithubUsername": null,
+      "GithubRef": null,
+      "GithubSha1": null,
+      "description": {
+        "Package": "reactR",
+        "Type": "Package",
+        "Title": "React Helpers",
+        "Version": "0.4.4",
+        "Date": "2021-02-20",
+        "Authors@R": "c(\n      person(\n        \"Facebook\", \"Inc\"\n        , role = c(\"aut\", \"cph\")\n        , comment = \"React library in lib, https://reactjs.org/; see AUTHORS for full list of contributors\"\n      ),\n      person(\n        \"Michel\",\"Weststrate\",\n        , role = c(\"aut\", \"cph\")\n        , comment = \"mobx library in lib, https://github.com/mobxjs\"\n      ),\n      person(\n        \"Kent\", \"Russell\"\n        , role = c(\"aut\", \"cre\")\n        , comment = \"R interface\"\n        , email = \"kent.russell@timelyportfolio.com\"\n      ),\n      person(\n        \"Alan\", \"Dipert\"\n        , role = c(\"aut\")\n        , comment = \"R interface\"\n        , email = \"alan@rstudio.com\"\n      )\n    )",
+        "Maintainer": "Kent Russell <kent.russell@timelyportfolio.com>",
+        "Description": "Make it easy to use 'React' in R with 'htmlwidget' scaffolds,\n              helper dependency functions, an embedded 'Babel' 'transpiler',\n              and examples.",
+        "URL": "https://github.com/react-R/reactR",
+        "BugReports": "https://github.com/react-R/reactR/issues",
+        "License": "MIT + file LICENSE",
+        "LazyData": "TRUE",
+        "Encoding": "UTF-8",
+        "Imports": "htmltools",
+        "Suggests": "htmlwidgets (>= 1.5.3), rmarkdown, shiny, V8, knitr, usethis,\njsonlite",
+        "RoxygenNote": "7.1.1",
+        "VignetteBuilder": "knitr",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-02-21 15:11:04 UTC; kentr",
+        "Author": "Facebook Inc [aut, cph] (React library in lib, https://reactjs.org/;\n    see AUTHORS for full list of contributors),\n  Michel Weststrate [aut, cph] (mobx library in lib,\n    https://github.com/mobxjs),\n  Kent Russell [aut, cre] (R interface),\n  Alan Dipert [aut] (R interface)",
+        "Repository": "RSPM",
+        "Date/Publication": "2021-02-22 14:50:06 UTC",
+        "Built": "R 4.2.0; ; 2022-04-22 21:17:31 UTC; unix"
+      }
+    },
+    "reactable": {
+      "Source": "CRAN",
+      "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
+      "GithubRepo": null,
+      "GithubUsername": null,
+      "GithubRef": null,
+      "GithubSha1": null,
+      "description": {
+        "Package": "reactable",
+        "Type": "Package",
+        "Title": "Interactive Data Tables Based on 'React Table'",
+        "Version": "0.3.0",
+        "Authors@R": "c(\n    person(\"Greg\", \"Lin\", email = \"glin@glin.io\", role = c(\"aut\", \"cre\")),\n    person(\"Tanner\", \"Linsley\", role = c(\"ctb\", \"cph\"), comment = \"React Table library\"),\n    person(family = \"Emotion team and other contributors\", role = c(\"ctb\", \"cph\"),\n           comment = \"Emotion library\")\n    )",
+        "Description": "Interactive data tables for R, based on the 'React Table'\n    JavaScript library. Provides an HTML widget that can be used in 'R Markdown'\n    documents and 'Shiny' applications, or viewed from an R console.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://glin.github.io/reactable/,\nhttps://github.com/glin/reactable",
+        "BugReports": "https://github.com/glin/reactable/issues",
+        "Depends": "R (>= 3.1)",
+        "Imports": "digest, htmltools, htmlwidgets, jsonlite, reactR",
+        "Suggests": "covr, crosstalk, dplyr, fontawesome, leaflet, MASS,\nrmarkdown, shiny, sparkline, testthat, tippy",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.1.2",
+        "NeedsCompilation": "no",
+        "Packaged": "2022-05-26 19:29:28 UTC; greg",
+        "Author": "Greg Lin [aut, cre],\n  Tanner Linsley [ctb, cph] (React Table library),\n  Emotion team and other contributors [ctb, cph] (Emotion library)",
+        "Maintainer": "Greg Lin <glin@glin.io>",
+        "Repository": "RSPM",
+        "Date/Publication": "2022-05-26 19:50:02 UTC",
+        "Built": "R 4.2.0; ; 2022-05-27 11:02:30 UTC; unix"
+      }
+    },
     "rematch2": {
       "Source": "CRAN",
       "Repository": "https://rstudio.jumpingrivers.cloud/package-manager/cran/__linux__/focal/latest",
@@ -3682,12 +3746,12 @@
       "GithubRepo": "utvizsunburst",
       "GithubUsername": "jumpingrivers",
       "GithubRef": "HEAD",
-      "GithubSha1": "f94576ccefd7c6e0d76e15e98a6575b06e7efee2",
+      "GithubSha1": "d28b0a4bd3da4fc70911e43c54fafd9930fd1694",
       "description": {
         "Type": "Package",
         "Package": "utVizSunburst",
         "Title": "htmlwidgets package for creating sunburst plots of retentions\nand admissions data",
-        "Version": "0.2.1",
+        "Version": "0.2.3",
         "Authors@R": "\n    person(\"Jumping\", \"Rivers\", , \"info@jumpingrivers.com\", role = c(\"aut\", \"cre\"))",
         "Description": "A package to create interactive visualizations of retentions\n    and admissions data.",
         "License": "MIT + file LICENSE",
@@ -3704,16 +3768,16 @@
         "RemoteRepo": "utvizsunburst",
         "RemoteUsername": "jumpingrivers",
         "RemoteRef": "HEAD",
-        "RemoteSha": "f94576ccefd7c6e0d76e15e98a6575b06e7efee2",
+        "RemoteSha": "d28b0a4bd3da4fc70911e43c54fafd9930fd1694",
         "GithubRepo": "utvizsunburst",
         "GithubUsername": "jumpingrivers",
         "GithubRef": "HEAD",
-        "GithubSHA1": "f94576ccefd7c6e0d76e15e98a6575b06e7efee2",
+        "GithubSHA1": "d28b0a4bd3da4fc70911e43c54fafd9930fd1694",
         "NeedsCompilation": "no",
-        "Packaged": "2022-08-31 10:29:18 UTC; mandy",
+        "Packaged": "2022-09-07 09:38:02 UTC; mandy",
         "Author": "Jumping Rivers [aut, cre]",
         "Maintainer": "Jumping Rivers <info@jumpingrivers.com>",
-        "Built": "R 4.2.1; ; 2022-08-31 10:29:18 UTC; unix"
+        "Built": "R 4.2.1; ; 2022-09-07 09:38:02 UTC; unix"
       }
     },
     "utf8": {
@@ -4123,7 +4187,7 @@
       "checksum": "ded15960dafb693a0bba0e5c52f3e360"
     },
     ".gitlab-ci.yml": {
-      "checksum": "ff3ee93e6911c347965bb159fba45db6"
+      "checksum": "d1e5ffd8e20943b1173cf7075297a95f"
     },
     ".lintr": {
       "checksum": "039e35f4f94a12fef3af9b15d48fc4a7"
@@ -4144,7 +4208,7 @@
       "checksum": "63ba8d54b843db4340d767463654d134"
     },
     "DESCRIPTION": {
-      "checksum": "dad55bbec044e1dd251750566404cc67"
+      "checksum": "0194dd2a7b11d056d6a8b78ad224c414"
     },
     "inst/app/fake_data/daily_enrollment.rds": {
       "checksum": "388870f4dc3062969b7af1bcbcb777c5"
@@ -4267,7 +4331,7 @@
       "checksum": "a4ecabd5b6e7ba766d7d4d066fad7652"
     },
     "R/mod_sunburst.R": {
-      "checksum": "47594cb4fc8804f0fc4d842f62a5e05f"
+      "checksum": "eabba85b79f890656cd8bbad89e26524"
     },
     "R/run_app.R": {
       "checksum": "4affbefb0b737b807d5c774e88da7366"
