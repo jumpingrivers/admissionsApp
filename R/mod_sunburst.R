@@ -25,17 +25,24 @@ mod_sunburst_server = function(id, admissions) {
   shiny::moduleServer(id, function(input, output, session) {
     ns = session$ns # nolint
 
+    mouseover_handler = utVizSunburst::get_shiny_input_handler(inputId = ns("sunburst_sector_data"),
+                                                               type = "path_data")
     output$sunburst = utVizSunburst::renderSunburst({
       utVizSunburst::sunburst(admissions,
-                              steps = c("gpa", "club", "student_type", "outcome"))
+                              palette = colors_8(),
+                              steps = c("college", "student_type", "outcome", "gpa"),
+                              mouseover_handler = mouseover_handler
+      )
+    })
+
+    sector_data = shiny::eventReactive(input$sunburst_sector_data, {
+      input$sunburst_sector_data
     })
 
     output$table = reactable::renderReactable({
-      admissions_subset = admissions[c("gpa", "club", "student_type", "outcome")][1:4, ]
-      admissions_subset["color"] = c("#4e79a7", "#7792b3", "#97acc9", "#b5c8e1")
-      reactable::reactable(admissions_subset,
-                           columns = list(
-                             color = reactable::colDef(style =  function(value) {
+      reactable::reactable(sector_data(),
+                           columns = list(color = reactable::colDef(
+                             style =  function(value) {
                                list(background = value,
                                     color = "transparent")
                              }

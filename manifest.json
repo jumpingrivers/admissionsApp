@@ -1566,7 +1566,7 @@
         "Maintainer": "Thomas Lin Pedersen <thomas.pedersen@rstudio.com>",
         "Repository": "RSPM",
         "Date/Publication": "2022-05-03 07:00:14 UTC",
-        "Built": "R 4.2.0; ; 2022-05-04 11:01:51 UTC; unix"
+        "Built": "R 4.2.1; ; 2022-09-11 14:38:31 UTC; unix"
       }
     },
     "gh": {
@@ -3746,38 +3746,39 @@
       "GithubRepo": "utvizsunburst",
       "GithubUsername": "jumpingrivers",
       "GithubRef": "HEAD",
-      "GithubSha1": "d28b0a4bd3da4fc70911e43c54fafd9930fd1694",
+      "GithubSha1": "68090f9d701caeaf73af41c44355879315e0eaf1",
       "description": {
         "Type": "Package",
         "Package": "utVizSunburst",
         "Title": "htmlwidgets package for creating sunburst plots of retentions\nand admissions data",
-        "Version": "0.2.3",
+        "Version": "0.4.1",
         "Authors@R": "\n    person(\"Jumping\", \"Rivers\", , \"info@jumpingrivers.com\", role = c(\"aut\", \"cre\"))",
         "Description": "A package to create interactive visualizations of retentions\n    and admissions data.",
         "License": "MIT + file LICENSE",
         "Depends": "R (>= 4.1.0)",
-        "Imports": "gplots, htmlwidgets, magrittr, rlang",
-        "Suggests": "knitr, rmarkdown, testthat (>= 3.0.0)",
+        "Imports": "gplots, htmlwidgets, magrittr, rlang, shiny, stringr",
+        "Suggests": "knitr, patrick, purrr, rmarkdown, testthat (>= 3.0.0)",
         "VignetteBuilder": "knitr",
         "Config/testthat/edition": "3",
         "Encoding": "UTF-8",
         "LazyData": "true",
+        "Roxygen": "list(markdown = TRUE)",
         "RoxygenNote": "7.2.1",
         "RemoteType": "github",
         "RemoteHost": "api.github.com",
         "RemoteRepo": "utvizsunburst",
         "RemoteUsername": "jumpingrivers",
         "RemoteRef": "HEAD",
-        "RemoteSha": "d28b0a4bd3da4fc70911e43c54fafd9930fd1694",
+        "RemoteSha": "68090f9d701caeaf73af41c44355879315e0eaf1",
         "GithubRepo": "utvizsunburst",
         "GithubUsername": "jumpingrivers",
         "GithubRef": "HEAD",
-        "GithubSHA1": "d28b0a4bd3da4fc70911e43c54fafd9930fd1694",
+        "GithubSHA1": "68090f9d701caeaf73af41c44355879315e0eaf1",
         "NeedsCompilation": "no",
-        "Packaged": "2022-09-07 09:38:02 UTC; mandy",
+        "Packaged": "2022-09-15 13:16:10 UTC; mandy",
         "Author": "Jumping Rivers [aut, cre]",
         "Maintainer": "Jumping Rivers <info@jumpingrivers.com>",
-        "Built": "R 4.2.1; ; 2022-09-07 09:38:02 UTC; unix"
+        "Built": "R 4.2.1; ; 2022-09-15 13:16:10 UTC; unix"
       }
     },
     "utf8": {
@@ -4208,7 +4209,7 @@
       "checksum": "63ba8d54b843db4340d767463654d134"
     },
     "DESCRIPTION": {
-      "checksum": "0194dd2a7b11d056d6a8b78ad224c414"
+      "checksum": "7f2633e75239b1eb4f114744460db514"
     },
     "inst/app/fake_data/daily_enrollment.rds": {
       "checksum": "388870f4dc3062969b7af1bcbcb777c5"
@@ -4331,7 +4332,7 @@
       "checksum": "a4ecabd5b6e7ba766d7d4d066fad7652"
     },
     "R/mod_sunburst.R": {
-      "checksum": "eabba85b79f890656cd8bbad89e26524"
+      "checksum": "31fac9954027b7da784a09940031f173"
     },
     "R/run_app.R": {
       "checksum": "4affbefb0b737b807d5c774e88da7366"
