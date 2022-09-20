@@ -1,6 +1,6 @@
 Package: admissionsApp
 Title: Admissions data application
-Version: 0.0.0.9006
+Version: 0.0.0.9007
 Authors@R:
     person("Jumping", "Rivers", , "info@jumpingrivers.com", role = c("aut", "cre"))
 Description: Admissions data exploration app-as-a-package.
