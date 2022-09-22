@@ -1,7 +1,7 @@
 # Values should be 0, unless reasons given
 variables:
   ALLOWED_WARNINGS: 0
-  ALLOWED_NOTES: 2 # data + file
+  ALLOWED_NOTES: 3 # data + file + many imports
   NO_IMPORTS: 0
   #disable_verify_r_package: "false"
   #DRAT_PUBLISH: "true"

@@ -1,6 +1,6 @@
 Package: shinyAdmissions
 Title: Admissions data application
-Version: 0.0.0.9005
+Version: 0.0.0.9007
 Authors@R:
     person("Jumping", "Rivers", , "info@jumpingrivers.com", role = c("aut", "cre"))
 Description: Admissions data exploration app-as-a-package.
@@ -19,6 +19,7 @@ Imports:
     magrittr,
     pins,
     plotly,
+    reactable,
     rlang,
     scales,
     shiny (>= 1.7.1),
