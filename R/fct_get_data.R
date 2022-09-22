@@ -3,12 +3,26 @@
 #' Read parsed daily enrollment from pin.
 #' Requires env var PIN_USER for path to data file
 #' called daily_enrollment.
-get_daily_enrollment = function() {
-  pin_user = get_pin_user()
-  board_rsc = pins::board_rsconnect()
-  enrollment_path = glue::glue("{pin_user}/enrollment")
-  enrollment = pins::pin_read(board_rsc, enrollment_path)
-  return(enrollment)
+get_daily_enrollment = function(method="from_rds") {
+
+  if (method == "from_sql") {
+    daily_enrollment_df <- utHelpR::get_data_from_sql_file("daily_enrollment.sql", dsn="edify", context="shiny")
+  }
+  else if (method == "from_rds") {
+   daily_enrollment_df <- readRDS(here::here("inst", "app", "fake_data", "daily_enrollment.rds")) %>%
+    dplyr::mutate( year = as.character( sample(1978:2022, length(term_id), replace = TRUE) ),
+                   season = as.character( sample(c("Spring", "Fall", "Summer"), length(term_id), replace = TRUE) ))
+  }
+  else if (method == "from_pin") {
+    pin_user = get_pin_user()
+    board_rsc = pins::board_rsconnect()
+    enrollment_path = glue::glue("{pin_user}/enrollment")
+    daily_enrollment_df = pins::pin_read(board_rsc, enrollment_path)
+  }
+  else {
+    stop("Method for gathering dialy enrollment data is not defined.")
+  }
+  return(daily_enrollment_df)
 }
 
 

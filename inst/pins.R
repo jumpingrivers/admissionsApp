@@ -2,7 +2,7 @@
 library("magrittr")
 
 file_path = system.file("app/fake_data/daily_enrollment.rds",
-                        package = "admissionsApp",
+                        package = "shinyAdmissions",
                         mustWork = TRUE)
 
 raw_enrollment = readRDS(file_path)

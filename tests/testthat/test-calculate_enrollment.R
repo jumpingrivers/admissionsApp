@@ -1,6 +1,6 @@
 testthat::test_that("enrollment calculation works", {
   file_path = system.file("app/fake_data/daily_enrollment.rds",
-                          package = "admissionsApp",
+                          package = "shinyAdmissions",
                           mustWork = TRUE)
   raw_enrollment = readRDS(file_path)
   daily_enrollment = raw_enrollment %>%
@@ -16,7 +16,7 @@ testthat::test_that("enrollment calculation works", {
   year = 2018
   season = "Fall"
   pct_change = FALSE
-  enrollment = admissionsApp:::calculate_enrollment(daily_enrollment, # nolint
+  enrollment = shinyAdmissions:::calculate_enrollment(daily_enrollment, # nolint
                                                     year,
                                                     season,
                                                     group,

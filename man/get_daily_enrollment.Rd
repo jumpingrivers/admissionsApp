@@ -4,7 +4,7 @@
 \alias{get_daily_enrollment}
 \title{Read daily enrollment from pin}
 \usage{
-get_daily_enrollment()
+get_daily_enrollment(method = "from_rds")
 }
 \description{
 Read parsed daily enrollment from pin.
