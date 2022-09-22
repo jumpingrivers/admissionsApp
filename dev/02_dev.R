@@ -18,26 +18,24 @@
 attachment::att_amend_desc()
 
 ## Development package dependency.
+# install.packages("devtools")
 devtools::install_github("dsu-effectiveness/utVizSunburst")
 
 usethis::use_dev_package("utVizSunburst")
 
+devtools::install_github("dsu-effectiveness/utHelpR")
+
+usethis::use_dev_package("utHelpR")
+
 ## Add modules ----
 ## Create a module infrastructure in R/
-golem::add_module(name = "rate_metric_bar_chart",
-                  fct = "plot_generation",
-                  with_test = TRUE) # Rate metric bar chart
-golem::add_module(name = "over_time_line_chart",
-                  fct = "plot_generation",
-                  with_test = TRUE) # Over time line chart
-golem::add_module(name = "summarized_data_table",
-                  with_test = TRUE) # Interactive data table, summarized version
-golem::add_module(name = "downloadable_data_table",
-                  with_test = TRUE) # Interactive data table, downloadable version
+golem::add_module(name = "module",
+                  fct = "module_plot_generation",
+                  with_test = TRUE)
 
 ## Add internal datasets ----
 ## If you have data in your package
-usethis::use_data_raw(name = "entity_time_metric_categories_df", open = FALSE)
+usethis::use_data_raw(name = "fake_df", open = FALSE)
 # ACTION: Code to generate this data frame will need to be written and ran to save the data in the package.
 
 # IMPORTANT: There may be more random datasets to add, as module development continues...
@@ -45,10 +43,6 @@ usethis::use_data_raw(name = "entity_time_metric_categories_df", open = FALSE)
 # ACTION: created a sql directory in inst/
 # this is where any custom sql for this project should be stored.
 
-# install.packages("devtools")
-devtools::install_github("dsu-effectiveness/utHelpR")
-
-usethis::use_dev_package("utHelpR")
 
 ## Continuation of DEV ####
 ## this is where the project currently is in development,

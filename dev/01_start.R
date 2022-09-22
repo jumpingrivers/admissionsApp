@@ -19,13 +19,13 @@
 ## to change the name in the app_sys() function in app_config.R /!\
 ##
 golem::fill_desc(
-  pkg_name = "NCAA", # The Name of the package containing the App
-  pkg_title = "NCAA Reports", # The Title of the package containing the App
-  pkg_description = "A {golem} based Shiny app package, designed to meet all NCAA reporting needs.", # The Description of the package containing the App
-  author_first_name = "LaVoy", # Your First Name
+  pkg_name = "shinyAdmissions", # The Name of the package containing the App
+  pkg_title = "Admissions Exploration", # The Title of the package containing the App
+  pkg_description = "A Shiny application, implemented as an R package, for exploring admissions metrics.", # The Description of the package containing the App
+  author_first_name = "", # Your First Name
   author_last_name = "", # Your Last Name
-  author_email = "brentenlavoy@gmail.com", # Your Email
-  repo_url = "https://github.com/dsu-effectiveness/NCAA" # The URL of the GitHub Repo (optional)
+  author_email = "", # Your Email
+  repo_url = "https://github.com/dsu-effectiveness/shinyAdmissions" # The URL of the GitHub Repo (optional)
 )
 
 ## Set {golem} options ----
@@ -33,10 +33,10 @@ golem::set_golem_options()
 
 ## Create Common Files ----
 ## See ?usethis for more information
-# usethis::use_mit_license("Golem User") # You can set another license here
+usethis::use_mit_license("Golem User") # You can set another license here
 # Setting the license as CC-BY: Free to share and adapt, must give appropriate credit.
 # Rather than using the default MIT license.
-usethis::use_ccby_license()
+# usethis::use_ccby_license()
 
 ## use rmd to generate the README for the repo
 usethis::use_readme_rmd(open = FALSE)

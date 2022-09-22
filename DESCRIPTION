@@ -15,6 +15,7 @@ Imports:
     ggplot2,
     glue,
     golem (>= 0.3.3),
+    here,
     lubridate,
     magrittr,
     pins,
@@ -27,14 +28,14 @@ Imports:
     shinyWidgets,
     stringr,
     tidyr,
-    utVizSunburst (>= 0.3.0),
+    utHelpR (>= 0.0.0.9000),
+    utVizSunburst (>= 0.4.1),
     waiter
 Suggests:
-    pkgload,
-    rsconnect,
     shinytest2,
     testthat (>= 3.0.0)
 Remotes: 
+    dsu-effectiveness/utHelpR,
     dsu-effectiveness/utVizSunburst
 Config/testthat/edition: 3
 Encoding: UTF-8

@@ -1,6 +1,6 @@
 ## Dependencies ----
 ## Amend DESCRIPTION with dependencies read from package code parsing
-#attachment::att_amend_desc()
+attachment::att_amend_desc()
 
 # Set options here
 options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
