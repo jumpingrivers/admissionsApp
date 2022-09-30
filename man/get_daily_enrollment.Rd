@@ -6,6 +6,9 @@
 \usage{
 get_daily_enrollment(method = "from_rds")
 }
+\arguments{
+\item{method}{A string. Options are "from_rds", "from_sql", or "from_pin".}
+}
 \description{
 Read parsed daily enrollment from pin.
 Requires env var PIN_USER for path to data file

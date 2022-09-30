@@ -3,7 +3,10 @@
 #' Read parsed daily enrollment from pin.
 #' Requires env var PIN_USER for path to data file
 #' called daily_enrollment.
-get_daily_enrollment = function(method="from_rds") {
+#'
+#' @param method A string. Options are "from_rds", "from_sql", or "from_pin".
+#'
+get_daily_enrollment <- function(method="from_rds") {
 
   if (method == "from_sql") {
     daily_enrollment_df <- utHelpR::get_data_from_sql_file("daily_enrollment.sql", dsn="edify", context="shiny")
@@ -14,13 +17,13 @@ get_daily_enrollment = function(method="from_rds") {
                    season = as.character( sample(c("Spring", "Fall", "Summer"), length(term_id), replace = TRUE) ))
   }
   else if (method == "from_pin") {
-    pin_user = get_pin_user()
-    board_rsc = pins::board_rsconnect()
-    enrollment_path = glue::glue("{pin_user}/enrollment")
-    daily_enrollment_df = pins::pin_read(board_rsc, enrollment_path)
+    pin_user <- get_pin_user()
+    board_rsc <- pins::board_rsconnect()
+    enrollment_path <- glue::glue("{pin_user}/enrollment")
+    daily_enrollment_df <- pins::pin_read(board_rsc, enrollment_path)
   }
   else {
-    stop("Method for gathering dialy enrollment data is not defined.")
+    stop("Method for gathering daily enrollment data is not defined.")
   }
   return(daily_enrollment_df)
 }
@@ -30,8 +33,8 @@ get_daily_enrollment = function(method="from_rds") {
 #'
 #' Read environment variable which sets
 #' which RStudio Connect account pinned data is read from
-get_pin_user = function() {
-  pin_user = Sys.getenv("PIN_USER")
+get_pin_user <- function() {
+  pin_user <- Sys.getenv("PIN_USER")
   if (pin_user == "") {
     cli::cli_alert_warning("Ensure you have an environment variable called PIN_USER")
     cli::cli_alert_warning("PIN_USER should be the user where data pins are uploaded")
