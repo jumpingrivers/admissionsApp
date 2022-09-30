@@ -2,7 +2,7 @@ default:
   golem_name: shinyAdmissions
   golem_version: 0.1.0
   app_prod: no
-  data_source: from_rds
+  data_source: from_fake_data
 production:
   app_prod: yes
   data_source: from_pin

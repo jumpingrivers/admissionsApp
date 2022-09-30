@@ -29,6 +29,7 @@ Imports:
     stringr,
     tidyr,
     utHelpR (>= 0.0.0.9000),
+    utShinyMods (>= 0.0.0.9000),
     utVizSunburst (>= 0.4.1),
     waiter
 Suggests:
@@ -36,6 +37,7 @@ Suggests:
     testthat (>= 3.0.0)
 Remotes: 
     dsu-effectiveness/utHelpR,
+    dsu-effectiveness/utShinyMods,
     dsu-effectiveness/utVizSunburst
 Config/testthat/edition: 3
 Encoding: UTF-8

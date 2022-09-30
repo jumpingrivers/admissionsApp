@@ -1,20 +1,23 @@
 #' Read daily enrollment data for the app
 #'
-#' Enrollment data is obtained by SQL query, from a pin or using a packaged `.rds` file.
+#' Enrollment data is obtained by SQL query, from a pin or using a packaged `.rds` file containing
+#' fake data.
 #'
 #' @param   method   Scalar character. Which method should be used for accessing the enrollment
-#' data? Valid choices: `from_rds` (the default; reads from a package-embedded dataset), `from_sql`
-#' (pulls from a database), `from_pin` (pulls from a pin-board on Posit connect).
+#' data? Valid choices: `from_fake_data` (the default; reads from a package-embedded dataset),
+#' `from_sql` (pulls from a database), `from_pin` (pulls from a pin-board on Posit connect).
 #'
 #' @return   data.frame containing the daily enrollment data.
 
-get_daily_enrollment <- function(method = "from_rds") {
+get_daily_enrollment <- function(method = "from_fake_data") {
+  method <- match.arg(method, c("from_fake_data", "from_sql", "from_pin"))
+
   if (method == "from_sql") {
     daily_enrollment_df <- utHelpR::get_data_from_sql_file(
       "daily_enrollment.sql",
       dsn = "edify", context = "shiny"
     )
-  } else if (method == "from_rds") {
+  } else if (method == "from_fake_data") {
     daily_enrollment_df <- readRDS(
       here::here("inst", "app", "fake_data", "daily_enrollment.rds")
     ) %>%
@@ -27,15 +30,36 @@ get_daily_enrollment <- function(method = "from_rds") {
         )
       )
   } else if (method == "from_pin") {
-    board <- get_pins_board()
-    pin_owner <- "rsconnectapi!service"
-    pin_name <- "daily_enrollment_pin"
-    daily_enrollment_df <- pins::pin_read(board, name = glue::glue("{pin_owner}/{pin_name}"))
+    pin_user <- get_pin_user()
+    board_rsc <- pins::board_rsconnect()
+    enrollment_path <- glue::glue("{pin_user}/daily_enrollment_pin")
+    daily_enrollment_df <- pins::pin_read(board_rsc, enrollment_path)
   } else {
     stop("Method for gathering daily enrollment data is not defined.")
   }
 
   return(daily_enrollment_df)
+}
+
+#' Read admissions funnel data
+#'
+#' @param   method   Scalar character. Which method should be used to obtain admissions-funnel data?
+#'   Options are `from_sql` and `from_fake_data`.
+#'
+#' @return   data-frame containing the admissions-funnel data.
+
+get_admissions_funnel <- function(method = "from_sql") {
+  method <- match.arg(method, choices = c("from_sql", "from_fake_data"))
+
+  if (method == "from_sql") {
+    return(
+      utHelpR::get_data_from_sql_file("admissions_funnel.sql", dsn = "edify", context = "shiny")
+    )
+  } else if (method == "from_fake_data") {
+    return(utVizSunburst::admissions)
+  } else {
+    stop("Method for gathering admissions-funnel data is not defined.")
+  }
 }
 
 #' Access the pins board that contains data for this app

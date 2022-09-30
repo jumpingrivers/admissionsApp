@@ -19,13 +19,14 @@ attachment::att_amend_desc()
 
 ## Development package dependency.
 # install.packages("devtools")
-devtools::install_github("dsu-effectiveness/utVizSunburst")
-
-usethis::use_dev_package("utVizSunburst")
-
 devtools::install_github("dsu-effectiveness/utHelpR")
 
 usethis::use_dev_package("utHelpR")
+
+devtools::install_github("dsu-effectiveness/utShinyMods")
+
+usethis::use_dev_package("utShinyMods")
+
 
 ## Add modules ----
 ## Create a module infrastructure in R/
