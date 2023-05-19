@@ -1,8 +1,14 @@
 #' Read daily enrollment from pin
 #'
 #' Read parsed daily enrollment from pin.
-#' Requires env var PIN_USER for path to data file
-#' called daily_enrollment.
+#' Requires env var `PIN_USER` for path to data file called `daily_enrollment_pin`.
+#'
+#' @param   method   Scalar character. Which method should be used for accessing the enrollment
+#' data? Valid choices: `from_rds` (the default; reads from a package-embedded dataset), `from_sql`
+#' (pulls from a database), `from_pin` (pulls from a pin-board on Posit connect).
+#'
+#' @return   data.frame containing the daily enrollment data.
+
 get_daily_enrollment = function(method="from_rds") {
 
   if (method == "from_sql") {
@@ -20,7 +26,7 @@ get_daily_enrollment = function(method="from_rds") {
     daily_enrollment_df = pins::pin_read(board_rsc, enrollment_path)
   }
   else {
-    stop("Method for gathering dialy enrollment data is not defined.")
+    stop("Method for gathering daily enrollment data is not defined.")
   }
   return(daily_enrollment_df)
 }
