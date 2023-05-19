@@ -6,8 +6,15 @@
 \usage{
 get_daily_enrollment(method = "from_rds")
 }
+\arguments{
+\item{method}{Scalar character. Which method should be used for accessing the enrollment
+data? Valid choices: `from_rds` (the default; reads from a package-embedded dataset), `from_sql`
+(pulls from a database), `from_pin` (pulls from a pin-board on Posit connect).}
+}
+\value{
+data.frame containing the daily enrollment data.
+}
 \description{
 Read parsed daily enrollment from pin.
-Requires env var PIN_USER for path to data file
-called daily_enrollment.
+Requires env var `PIN_USER` for path to data file called `daily_enrollment_pin`.
 }

@@ -9,7 +9,7 @@ app_server = function(input, output, session) {
                              shiny::br(),
                              shiny::p("Waiting for brilliance...")))
   )
-  daily_enrollment = get_daily_enrollment(method="from_sql")
+  daily_enrollment = get_daily_enrollment(method="from_pin")
   admissions = utVizSunburst::admissions
 
   waiter::waiter_hide()
