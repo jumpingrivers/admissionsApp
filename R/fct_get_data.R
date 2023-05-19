@@ -22,7 +22,7 @@ get_daily_enrollment = function(method="from_rds") {
   else if (method == "from_pin") {
     pin_user = get_pin_user()
     board_rsc = pins::board_rsconnect()
-    enrollment_path = glue::glue("{pin_user}/enrollment")
+    enrollment_path = glue::glue("{pin_user}/daily_enrollment_pin")
     daily_enrollment_df = pins::pin_read(board_rsc, enrollment_path)
   }
   else {
