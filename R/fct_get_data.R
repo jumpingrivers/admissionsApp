@@ -18,27 +18,35 @@ get_daily_enrollment <- function(method = "from_rds") {
         season = as.character(sample(c("Spring", "Fall", "Summer"), length(term_id), replace = TRUE))
       )
   } else if (method == "from_pin") {
-    pin_user <- get_pin_user()
-    board_rsc <- pins::board_rsconnect()
-    enrollment_path <- glue::glue("{pin_user}/daily_enrollment_pin")
-    daily_enrollment_df <- pins::pin_read(board_rsc, enrollment_path)
+    daily_enrollment_df <- read_enrollment_pin()
   } else {
     stop("Method for gathering daily enrollment data is not defined.")
   }
+
   return(daily_enrollment_df)
 }
 
-
-#' Get user for pinned data
+#' Read daily enrollment data from pin
 #'
-#' Read environment variable which sets
-#' which RStudio Connect account pinned data is read from
-get_pin_user <- function() {
-  pin_user <- Sys.getenv("PIN_USER")
-  if (pin_user == "") {
-    cli::cli_alert_warning("Ensure you have an environment variable called PIN_USER")
-    cli::cli_alert_warning("PIN_USER should be the user where data pins are uploaded")
-    stop("Fix env variable PIN_USER and try again")
+#' If running outside of Connect, this requires the {pins} server/account/key to be defined in the
+#' {golem} config for this app. The pins key is typically obtained from the environment variable
+#' `RSCONNECT_SERVICE_USER_API_KEY`.
+#'
+#' @return   data.frame containing the daily enrollment data.
+
+read_enrollment_pin <- function() {
+  pin_name <- "daily_enrollment_pin"
+  if (is_connect()) {
+    board <- pins::board_connect()
+    pin_path <- glue::glue("rsconnectapi!service/{pin_name}")
+  } else {
+    board <- pins::board_connect(
+      server = get_golem_config("pins_server", config = "testing"),
+      account = get_golem_config("pins_account", config = "testing"),
+      key = get_golem_config("pins_key", config = "testing")
+    )
+    pin_path <- pin_name
   }
-  return(pin_user)
+
+  pins::pin_read(board, pin_path)
 }
