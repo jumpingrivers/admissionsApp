@@ -2,9 +2,12 @@ default:
   golem_name: shinyAdmissions
   golem_version: 0.0.0.9007
   app_prod: no
+  data_source: from_rds
 production:
   app_prod: yes
+  data_source: from_pin
 testing:
+  data_source: from_pin
   pins_server: "https://rs-connect.utahtech.edu"
   pins_account: "rsconnectapi!service"
   pins_key: !expr Sys.getenv("RSCONNECT_SERVICE_USER_API_KEY", "undefined")
