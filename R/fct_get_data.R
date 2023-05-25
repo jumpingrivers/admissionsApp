@@ -1,7 +1,6 @@
-#' Read daily enrollment from pin
+#' Read daily enrollment data for the app
 #'
-#' Read parsed daily enrollment from pin.
-#' Requires env var `PIN_USER` for path to data file called `daily_enrollment_pin`.
+#' Enrollment data is obtained by SQL query, from a pin or using a packaged `.rds` file.
 #'
 #' @param   method   Scalar character. Which method should be used for accessing the enrollment
 #' data? Valid choices: `from_rds` (the default; reads from a package-embedded dataset), `from_sql`
