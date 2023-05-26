@@ -8,8 +8,8 @@ production:
   data_source: from_pin
 testing:
   data_source: from_pin
-  pins_server: "https://rs-connect.utahtech.edu"
-  pins_account: "rsconnectapi!service"
-  pins_key: !expr Sys.getenv("RSCONNECT_SERVICE_USER_API_KEY", "undefined")
+  connect_server: !expr Sys.getenv("CONNECT_SERVER", "https://rs-connect.utahtech.edu")
+  connect_account: !expr Sys.getenv("CONNECT_ACCOUNT", "undefined")
+  connect_key: !expr Sys.getenv("CONNECT_API_KEY", "undefined")
 dev:
   golem_wd: !expr here::here()

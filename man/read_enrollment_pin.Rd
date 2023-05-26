@@ -12,5 +12,5 @@ data.frame containing the daily enrollment data.
 \description{
 If running outside of Connect, this requires the {pins} server/account/key to be defined in the
 {golem} config for this app. The pins key is typically obtained from the environment variable
-`RSCONNECT_SERVICE_USER_API_KEY`.
+`CONNECT_API_KEY`.
 }
