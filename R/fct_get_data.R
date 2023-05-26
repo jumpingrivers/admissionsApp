@@ -18,7 +18,10 @@ get_daily_enrollment <- function(method = "from_rds") {
         season = as.character(sample(c("Spring", "Fall", "Summer"), length(term_id), replace = TRUE))
       )
   } else if (method == "from_pin") {
-    daily_enrollment_df <- read_enrollment_pin()
+    board <- get_pins_board()
+    pin_owner <- "rsconnectapi!service"
+    pin_name <- "daily_enrollment_pin"
+    daily_enrollment_df <- pins::pin_read(board, name = glue::glue("{pin_owner}/{pin_name}"))
   } else {
     stop("Method for gathering daily enrollment data is not defined.")
   }
@@ -26,27 +29,25 @@ get_daily_enrollment <- function(method = "from_rds") {
   return(daily_enrollment_df)
 }
 
-#' Read daily enrollment data from pin
+#' Access the pins board that contains data for this app
 #'
 #' If running outside of Connect, this requires the {pins} server/account/key to be defined in the
-#' {golem} config for this app. The pins key is typically obtained from the environment variable
-#' `CONNECT_API_KEY`.
+#' {golem} config for this app. These values are typically stored in the environment variables
+#' `CONNECT_SERVER`, `CONNECT_ACCOUNT` and `CONNECT_API_KEY`. They are accessed from the fields
+#' `pins_server`, `pins_account`, `pins_key` in the config.
 #'
-#' @return   data.frame containing the daily enrollment data.
+#' If running on Connect, the server/account/key information is not used.
+#'
+#' @return   A {pins} board object
 
-read_enrollment_pin <- function() {
-  pin_name <- "daily_enrollment_pin"
-  pin_path <- glue::glue("rsconnectapi!service/{pin_name}")
-
-  board <- if (is_connect()) {
-    pins::board_connect()
-  } else {
-    pins::board_connect(
-      server = get_golem_config("connect_server"),
-      account = get_golem_config("connect_account"),
-      key = get_golem_config("connect_key")
-    )
+get_pins_board <- function() {
+  if (is_connect()) {
+    return(pins::board_connect())
   }
 
-  pins::pin_read(board, pin_path)
+  pins::board_connect(
+    server = get_golem_config("connect_server"),
+    account = get_golem_config("connect_account"),
+    key = get_golem_config("connect_key")
+  )
 }
