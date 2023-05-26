@@ -10,6 +10,6 @@ testing:
   data_source: from_pin
   connect_server: !expr Sys.getenv("CONNECT_SERVER", "https://rs-connect.utahtech.edu")
   connect_account: !expr Sys.getenv("CONNECT_ACCOUNT", "undefined")
-  connect_key: !expr Sys.getenv("CONNECT_API_KEY", "undefined")
+  connect_api_key: !expr Sys.getenv("CONNECT_API_KEY", "undefined")
 dev:
   golem_wd: !expr here::here()

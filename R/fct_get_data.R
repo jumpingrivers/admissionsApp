@@ -43,7 +43,7 @@ get_daily_enrollment <- function(method = "from_rds") {
 #' If running outside of Connect, this requires the {pins} server/account/key to be defined in the
 #' {golem} config for this app. These values are typically stored in the environment variables
 #' `CONNECT_SERVER`, `CONNECT_ACCOUNT` and `CONNECT_API_KEY`. They are accessed from the fields
-#' `pins_server`, `pins_account`, `pins_key` in the config.
+#' `connect_server`, `connect_account`, `connect_api_key` in the config.
 #'
 #' If running on Connect, the server/account/key information is not used.
 #'
@@ -57,6 +57,6 @@ get_pins_board <- function() {
   pins::board_connect(
     server = get_golem_config("connect_server"),
     account = get_golem_config("connect_account"),
-    key = get_golem_config("connect_key")
+    key = get_golem_config("connect_api_key")
   )
 }

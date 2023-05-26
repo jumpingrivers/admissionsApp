@@ -13,7 +13,7 @@ A {pins} board object
 If running outside of Connect, this requires the {pins} server/account/key to be defined in the
 {golem} config for this app. These values are typically stored in the environment variables
 `CONNECT_SERVER`, `CONNECT_ACCOUNT` and `CONNECT_API_KEY`. They are accessed from the fields
-`pins_server`, `pins_account`, `pins_key` in the config.
+`connect_server`, `connect_account`, `connect_api_key` in the config.
 }
 \details{
 If running on Connect, the server/account/key information is not used.
