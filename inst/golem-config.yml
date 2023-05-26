@@ -6,7 +6,7 @@ default:
 production:
   app_prod: yes
   data_source: from_pin
-testing:
+local-staging:
   data_source: from_pin
   connect_server: !expr Sys.getenv("CONNECT_SERVER", "https://rs-connect.utahtech.edu")
   connect_account: !expr Sys.getenv("CONNECT_ACCOUNT", "undefined")
