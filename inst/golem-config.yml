@@ -1,8 +1,15 @@
 default:
   golem_name: shinyAdmissions
-  golem_version: 0.0.0.9000
+  golem_version: 0.0.0.9007
   app_prod: no
+  data_source: from_rds
 production:
   app_prod: yes
+  data_source: from_pin
+local-staging:
+  data_source: from_pin
+  connect_server: !expr Sys.getenv("CONNECT_SERVER", "https://rs-connect.utahtech.edu")
+  connect_account: !expr Sys.getenv("CONNECT_ACCOUNT", "undefined")
+  connect_api_key: !expr Sys.getenv("CONNECT_API_KEY", "undefined")
 dev:
   golem_wd: !expr here::here()

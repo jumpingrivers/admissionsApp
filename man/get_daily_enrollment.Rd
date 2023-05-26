@@ -2,7 +2,7 @@
 % Please edit documentation in R/fct_get_data.R
 \name{get_daily_enrollment}
 \alias{get_daily_enrollment}
-\title{Read daily enrollment from pin}
+\title{Read daily enrollment data for the app}
 \usage{
 get_daily_enrollment(method = "from_rds")
 }
@@ -15,6 +15,5 @@ data? Valid choices: `from_rds` (the default; reads from a package-embedded data
 data.frame containing the daily enrollment data.
 }
 \description{
-Read parsed daily enrollment from pin.
-Requires env var `PIN_USER` for path to data file called `daily_enrollment_pin`.
+Enrollment data is obtained by SQL query, from a pin or using a packaged `.rds` file.
 }
