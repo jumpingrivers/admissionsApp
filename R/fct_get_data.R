@@ -36,16 +36,16 @@ get_daily_enrollment <- function(method = "from_rds") {
 
 read_enrollment_pin <- function() {
   pin_name <- "daily_enrollment_pin"
-  if (is_connect()) {
-    board <- pins::board_connect()
-    pin_path <- glue::glue("rsconnectapi!service/{pin_name}")
+  pin_path <- glue::glue("rsconnectapi!service/{pin_name}")
+
+  board <- if (is_connect()) {
+    pins::board_connect()
   } else {
-    board <- pins::board_connect(
+    pins::board_connect(
       server = get_golem_config("pins_server", config = "testing"),
       account = get_golem_config("pins_account", config = "testing"),
       key = get_golem_config("pins_key", config = "testing")
     )
-    pin_path <- pin_name
   }
 
   pins::pin_read(board, pin_path)
