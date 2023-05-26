@@ -10,12 +10,21 @@
 
 get_daily_enrollment <- function(method = "from_rds") {
   if (method == "from_sql") {
-    daily_enrollment_df <- utHelpR::get_data_from_sql_file("daily_enrollment.sql", dsn = "edify", context = "shiny")
+    daily_enrollment_df <- utHelpR::get_data_from_sql_file(
+      "daily_enrollment.sql",
+      dsn = "edify", context = "shiny"
+    )
   } else if (method == "from_rds") {
-    daily_enrollment_df <- readRDS(here::here("inst", "app", "fake_data", "daily_enrollment.rds")) %>%
+    daily_enrollment_df <- readRDS(
+      here::here("inst", "app", "fake_data", "daily_enrollment.rds")
+    ) %>%
       dplyr::mutate(
-        year = as.character(sample(1978:2022, length(term_id), replace = TRUE)),
-        season = as.character(sample(c("Spring", "Fall", "Summer"), length(term_id), replace = TRUE))
+        year = as.character(
+          sample(1978:2022, length(term_id), replace = TRUE)
+        ),
+        season = as.character(
+          sample(c("Spring", "Fall", "Summer"), length(term_id), replace = TRUE)
+        )
       )
   } else if (method == "from_pin") {
     board <- get_pins_board()
