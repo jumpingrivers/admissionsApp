@@ -9,6 +9,10 @@
 #' @importFrom shiny NS tagList
 mod_line_ui = function(id) {
   ns = shiny::NS(id) # nolint
+
+  year_min <- 2017
+  year_max <- this_year()
+
   shiny::tabPanel(
     "Enrollment",
     shiny::sidebarLayout(
@@ -32,8 +36,8 @@ mod_line_ui = function(id) {
         shinyWidgets::pickerInput(
           ns("year"),
           label = "Year",
-          choices = c("2017", "2018", "2019", "2020", "2021", "2022"),
-          selected = format(Sys.time(), "%Y"), # current year
+          choices = as.character(seq(from = year_min, to = year_max)),
+          selected = as.character(year_max),
           multiple = TRUE,
           options = list(`actions-box` = TRUE)),
         shinyWidgets::pickerInput(
@@ -131,6 +135,14 @@ mod_line_server = function(id, daily_enrollment) {
                             input$year)
     })
   })
+}
+
+#' Return the current year based on the system time
+#'
+#' @return The current year as a scalar number.
+
+this_year <- function() {
+  as.numeric(format(Sys.time(), "%Y"))
 }
 
 #' Create remaining group choices
