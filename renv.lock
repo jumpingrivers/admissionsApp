@@ -1971,14 +1971,22 @@
     },
     "tzdb": {
       "Package": "tzdb",
-      "Version": "0.4.0",
+      "Version": "0.3.0",
       "Source": "Repository",
       "Repository": "RSPM",
+      "RemotePkgRef": "tzdb@0.3.0",
+      "RemoteType": "standard",
+      "RemoteEtag": "\"44e1d9572465afd632fa40056bb1991d\"",
+      "RemotePackaged": "TRUE",
+      "RemoteRef": "tzdb",
+      "RemoteRepos": "https://packagemanager.rstudio.com/all/latest",
+      "RemotePkgPlatform": "source",
+      "RemoteSha": "0.3.0",
       "Requirements": [
         "R",
         "cpp11"
       ],
-      "Hash": "f561504ec2897f4d46f0c7657e488ae1"
+      "Hash": "b2e1cbce7c903eaf23ec05c58e59fb5e"
     },
     "utHelpR": {
       "Package": "utHelpR",
