@@ -1683,26 +1683,6 @@
       ],
       "Hash": "c2eae3d8c670fa9dfa35a12066f4a1d5"
     },
-    "shinyAdmissions": {
-      "Package": "shinyAdmissions",
-      "Version": "0.1.0",
-      "Source": "unknown",
-      "Requirements": [
-        "R",
-        "bslib",
-        "config",
-        "glue",
-        "golem",
-        "magrittr",
-        "pkgload",
-        "plotly",
-        "rlang",
-        "shiny",
-        "shinyWidgets",
-        "waiter"
-      ],
-      "Hash": "430fb8503017332a0ffc83b791d0f65b"
-    },
     "shinyWidgets": {
       "Package": "shinyWidgets",
       "Version": "0.7.6",
