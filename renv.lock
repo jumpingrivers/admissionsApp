@@ -1310,9 +1310,17 @@
     },
     "plotly": {
       "Package": "plotly",
-      "Version": "4.10.1",
+      "Version": "4.10.0",
       "Source": "Repository",
       "Repository": "RSPM",
+      "RemotePkgRef": "plotly@4.10.0",
+      "RemoteType": "standard",
+      "RemoteEtag": "\"773267776a15c21a7a3fd26e67c0ec79\"",
+      "RemotePackaged": "TRUE",
+      "RemoteRef": "plotly",
+      "RemoteRepos": "https://packagemanager.rstudio.com/all/latest",
+      "RemotePkgPlatform": "source",
+      "RemoteSha": "4.10.0",
       "Requirements": [
         "R",
         "RColorBrewer",
@@ -1338,7 +1346,7 @@
         "vctrs",
         "viridisLite"
       ],
-      "Hash": "3781cf6971c6467fa842a63725bbee9e"
+      "Hash": "fbb11e44d057996ca5fe40d959cacfb0"
     },
     "praise": {
       "Package": "praise",
