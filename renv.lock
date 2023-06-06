@@ -1491,9 +1491,17 @@
     },
     "readr": {
       "Package": "readr",
-      "Version": "2.1.4",
+      "Version": "2.1.3",
       "Source": "Repository",
       "Repository": "RSPM",
+      "RemotePkgRef": "readr@2.1.3",
+      "RemoteType": "standard",
+      "RemoteEtag": "\"0e9a1fecb3bfe721abc2bc298e4f2c4b\"",
+      "RemotePackaged": "TRUE",
+      "RemoteRef": "readr",
+      "RemoteRepos": "https://packagemanager.rstudio.com/all/latest",
+      "RemotePkgPlatform": "source",
+      "RemoteSha": "2.1.3",
       "Requirements": [
         "R",
         "R6",
@@ -1510,7 +1518,7 @@
         "utils",
         "vroom"
       ],
-      "Hash": "b5047343b3825f37ad9d3b5d89aa1078"
+      "Hash": "2dfbfc673ccb3de3d8836b4b3bd23d14"
     },
     "readxl": {
       "Package": "readxl",
