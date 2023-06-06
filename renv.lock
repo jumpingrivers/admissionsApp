@@ -1242,20 +1242,23 @@
     },
     "pins": {
       "Package": "pins",
-      "Version": "1.2.0",
+      "Version": "1.1.0",
       "Source": "Repository",
       "Repository": "RSPM",
+      "RemotePkgRef": "pins@1.1.0",
       "RemoteType": "standard",
-      "RemotePkgRef": "pins",
+      "RemoteEtag": "\"548b490f0dfb5f1ebc9e16c9861f26a3\"",
+      "RemotePackaged": "TRUE",
       "RemoteRef": "pins",
       "RemoteRepos": "https://packagemanager.rstudio.com/all/latest",
       "RemotePkgPlatform": "source",
-      "RemoteSha": "1.2.0",
+      "RemoteSha": "1.1.0",
       "Requirements": [
         "R",
         "cli",
         "digest",
         "ellipsis",
+        "filelock",
         "fs",
         "generics",
         "glue",
@@ -1263,15 +1266,17 @@
         "jsonlite",
         "lifecycle",
         "magrittr",
-        "purrr",
+        "mime",
+        "openssl",
         "rappdirs",
         "rlang",
         "tibble",
         "whisker",
         "withr",
-        "yaml"
+        "yaml",
+        "zip"
       ],
-      "Hash": "01080dd12fbc8045722140595a388d03"
+      "Hash": "c6bfa6bbbc54c1d71828ab9167918016"
     },
     "pkgconfig": {
       "Package": "pkgconfig",
@@ -2183,6 +2188,13 @@
       "Source": "Repository",
       "Repository": "RSPM",
       "Hash": "0d0056cc5383fbc240ccd0cb584bf436"
+    },
+    "zip": {
+      "Package": "zip",
+      "Version": "2.3.0",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Hash": "d98c94dacb7e0efcf83b0a133a705504"
     }
   }
 }
