@@ -1522,15 +1522,17 @@
     },
     "readxl": {
       "Package": "readxl",
-      "Version": "1.4.2",
+      "Version": "1.4.1",
       "Source": "Repository",
       "Repository": "RSPM",
+      "RemotePkgRef": "readxl@1.4.1",
       "RemoteType": "standard",
-      "RemotePkgRef": "readxl",
+      "RemoteEtag": "\"1e4950cdebaae3aa8f43d412834c1374\"",
+      "RemotePackaged": "TRUE",
       "RemoteRef": "readxl",
       "RemoteRepos": "https://packagemanager.rstudio.com/all/latest",
       "RemotePkgPlatform": "source",
-      "RemoteSha": "1.4.2",
+      "RemoteSha": "1.4.1",
       "Requirements": [
         "R",
         "cellranger",
@@ -1539,7 +1541,7 @@
         "tibble",
         "utils"
       ],
-      "Hash": "2e6020b1399d95f947ed867045e9ca17"
+      "Hash": "5c1fbc365ac0a3fe7728ac79108b8e64"
     },
     "rematch": {
       "Package": "rematch",
