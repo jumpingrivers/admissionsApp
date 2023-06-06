@@ -504,14 +504,22 @@
     },
     "data.table": {
       "Package": "data.table",
-      "Version": "1.14.8",
+      "Version": "1.14.6",
       "Source": "Repository",
       "Repository": "RSPM",
+      "RemotePkgRef": "data.table@1.14.6",
+      "RemoteType": "standard",
+      "RemoteEtag": "\"91342193bf1500dd471eabc0e15909c5\"",
+      "RemotePackaged": "TRUE",
+      "RemoteRef": "data.table",
+      "RemoteRepos": "https://packagemanager.rstudio.com/all/latest",
+      "RemotePkgPlatform": "source",
+      "RemoteSha": "1.14.6",
       "Requirements": [
         "R",
         "methods"
       ],
-      "Hash": "b4c06e554f33344e044ccd7fdca750a9"
+      "Hash": "aecef50008ea7b57c76f1cb5c127fb02"
     },
     "desc": {
       "Package": "desc",
