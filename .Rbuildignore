@@ -1,3 +1,5 @@
+^renv$
+^renv\.lock$
 ^data-raw$
 dev_history.R
 ^dev$
@@ -9,6 +11,7 @@ $run_dev.*
 \.gitkeep$
 ^\.gitlab-ci\.yml$
 ^\.lintr$
+^\.renvignore$
 _files$
 ^_
 docs
