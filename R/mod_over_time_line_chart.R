@@ -16,14 +16,17 @@
 
 mod_over_time_line_chart_ui <- function(id) {
   ns <- NS(id)
-  tagList(
-    uiOutput(ns("module_title_ui")),
-    fluidRow(
-      column(2, tagList(
-        uiOutput(ns("grouping_selection_ui")),
-        uiOutput(ns("filter_control_ui"))
+  shiny::tagList(
+    shiny::uiOutput(ns("module_title_ui")),
+    shiny::fluidRow(
+      shiny::column(2, shiny::tagList(
+        shiny::uiOutput(ns("grouping_selection_ui")),
+        shiny::uiOutput(ns("filter_control_ui"))
       )),
-      column(10, tagList(plotly::plotlyOutput(ns("over_time_line_chart"), width = NULL)))
+      shiny::column(
+        10,
+        shiny::tagList(plotly::plotlyOutput(ns("over_time_line_chart"), width = NULL))
+      )
     )
   )
 }
@@ -71,20 +74,20 @@ mod_over_time_line_chart_server <- function(id,
                                             ),
                                             module_title = "Title of Module",
                                             module_sub_title = "Sub Title for module.") {
-  moduleServer(id, function(input, output, session) {
+  shiny::moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
     # UI Generation ####
-    output$module_title_ui <- renderUI({
-      tagList(
-        h2(module_title),
-        p(module_sub_title)
+    output$module_title_ui <- shiny::renderUI({
+      shiny::tagList(
+        htmltools::h2(module_title),
+        htmltools::p(module_sub_title)
       )
     })
-    output$grouping_selection_ui <- renderUI({
-      tagList(
+    output$grouping_selection_ui <- shiny::renderUI({
+      shiny::tagList(
         shinyWidgets::pickerInput(ns("grouping_selection"),
-          tags$b("Group By"),
+          htmltools::tags$b("Group By"),
           choices = grouping_cols,
           multiple = TRUE,
           selected = grouping_cols[1],
@@ -93,10 +96,10 @@ mod_over_time_line_chart_server <- function(id,
       )
     })
     # Filter controls
-    output$filter_control_ui <- renderUI({
+    output$filter_control_ui <- shiny::renderUI({
       filter_panel_name <- "filter_control"
       filter_control <- shinyWidgets::pickerInput(ns(filter_panel_name),
-        tags$b("Add/Remove Filter"),
+        htmltools::tags$b("Add/Remove Filter"),
         choices = filter_cols,
         multiple = TRUE,
         options = list(`actions-box` = TRUE)
@@ -117,9 +120,9 @@ mod_over_time_line_chart_server <- function(id,
     }
 
     # Reactive Dataframe ####
-    reactive_over_time_plot_df <- reactive({
+    reactive_over_time_plot_df <- shiny::reactive({
       # Pause plot execution while input values evaluate. This eliminates an error message.
-      req(input$grouping_selection)
+      shiny::req(input$grouping_selection)
 
       plot_df <- df %>%
         tidyr::unite(grouping, input$grouping_selection, remove = FALSE, sep = " | ") %>%
@@ -134,7 +137,7 @@ mod_over_time_line_chart_server <- function(id,
         dplyr::mutate(x_plot = !!rlang::sym(time_col)) %>%
         dplyr::ungroup()
       # Pause plot execution if df has no values. This eliminates an error message.
-      req(nrow(plot_df) > 0)
+      shiny::req(nrow(plot_df) > 0)
       return(plot_df)
     })
 
@@ -153,8 +156,8 @@ mod_over_time_line_chart_server <- function(id,
       )
 
       generate_line_chart(reactive_plot_df,
-        x = x_plot,
-        y = y_plot,
+        x = .data[["x_plot"]],
+        y = .data[["y_plot"]],
         x_is_continuous = x_is_continuous,
         grouping = grouping,
         x_label = names(time_col),
