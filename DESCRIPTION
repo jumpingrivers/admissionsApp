@@ -18,6 +18,7 @@ Imports:
     htmltools,
     lubridate,
     magrittr,
+    ngram,
     pins,
     plotly,
     reactable,

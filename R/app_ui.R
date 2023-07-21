@@ -13,7 +13,7 @@ app_ui <- function(request) {
       theme = utShinyMods::get_theme(),
       shiny::tabPanel(
         "Daily Enrollment",
-        utShinyMods::mod_over_time_line_chart_ui("daily_enrollment_line_chart")
+        mod_over_time_line_chart_ui("daily_enrollment_line_chart")
       ),
       shiny::tabPanel(
         "Admission Funnel",

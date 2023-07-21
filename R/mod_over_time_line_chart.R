@@ -1,0 +1,172 @@
+#' over_time_line_chart UI Function
+#'
+#' To be copied in the UI
+#' mod_over_time_line_chart_ui("over_time_line_chart_1")
+#'
+#' To be copied in the server
+#' mod_over_time_line_chart_server("over_time_line_chart_1")'
+#'
+#' @description A shiny Module.
+#'
+#' @param   id   A unique identifier, linking the UI to the Server
+#'
+#' @importFrom shiny NS tagList
+#'
+#' @export
+
+mod_over_time_line_chart_ui <- function(id) {
+  ns <- NS(id)
+  tagList(
+    uiOutput(ns("module_title_ui")),
+    fluidRow(
+      column(2, tagList(
+        uiOutput(ns("grouping_selection_ui")),
+        uiOutput(ns("filter_control_ui"))
+      )),
+      column(10, tagList(plotly::plotlyOutput(ns("over_time_line_chart"), width = NULL)))
+    )
+  )
+}
+
+#' over_time_line_chart Server Functions
+#'
+#' To be copied in the UI
+#' mod_over_time_line_chart_ui("over_time_line_chart_1")
+#'
+#' To be copied in the server
+#' mod_over_time_line_chart_server("over_time_line_chart_1")'
+#'
+#' Justification for using extra parameters in the Server function, can be found in the following
+#' documentation: https://shiny.rstudio.com/articles/modules.html
+#' Quote from documentation:
+#' "You can define the function so that it takes any number of additional parameters, including ...,
+#' so that whoever uses the module can customize what the module does."
+#'
+#' @param   id   A unique identifier, linking the UI to the Server.
+#' @param   df   A data frame.
+#' @param   time_col   The time column.
+#' @param   metric_col   The metric column.
+#' @param   metric_summarization_function   A function for summarising the metric.
+#' @param   grouping_cols   The columns to be used for grouping.
+#' @param   filter_cols   The columns to be used for filtering.
+#' @param   module_title   Title for the chart.
+#' @param   module_sub_title   Subtitle for the chart.
+#'
+#' @export
+
+mod_over_time_line_chart_server <- function(id,
+                                            df = utShinyMods::entity_time_metric_categories_df,
+                                            time_col = c("Time" = "time_column"),
+                                            metric_col = c("Metric" = "metric_column"),
+                                            metric_summarization_function = sum,
+                                            grouping_cols = c(
+                                              "Category 1" = "entity_category_1",
+                                              "Category 2" = "entity_category_2",
+                                              "Category 3" = "entity_category_3"
+                                            ),
+                                            filter_cols = c(
+                                              "Category 1" = "entity_category_1",
+                                              "Category 2" = "entity_category_2",
+                                              "Category 3" = "entity_category_3"
+                                            ),
+                                            module_title = "Title of Module",
+                                            module_sub_title = "Sub Title for module.") {
+  moduleServer(id, function(input, output, session) {
+    ns <- session$ns
+
+    # UI Generation ####
+    output$module_title_ui <- renderUI({
+      tagList(
+        h2(module_title),
+        p(module_sub_title)
+      )
+    })
+    output$grouping_selection_ui <- renderUI({
+      tagList(
+        shinyWidgets::pickerInput(ns("grouping_selection"),
+          tags$b("Group By"),
+          choices = grouping_cols,
+          multiple = TRUE,
+          selected = grouping_cols[1],
+          options = list(`actions-box` = TRUE)
+        )
+      )
+    })
+    # Filter controls
+    output$filter_control_ui <- renderUI({
+      filter_panel_name <- "filter_control"
+      filter_control <- shinyWidgets::pickerInput(ns(filter_panel_name),
+        tags$b("Add/Remove Filter"),
+        choices = filter_cols,
+        multiple = TRUE,
+        options = list(`actions-box` = TRUE)
+      )
+      filter_displays <- lapply(names(filter_cols), function(filter_label) {
+        conditional_filter_panel(filter_cols[[filter_label]], filter_panel_name, session)
+      })
+      do.call(tagList, list(filter_control, filter_displays))
+    })
+    for (filter_label in names(filter_cols)) {
+      local({
+        local_filter_cols <- filter_cols
+        local_filter_label <- filter_label
+        col_name <- local_filter_cols[[local_filter_label]]
+        output_name <- glue::glue("{col_name}_panel")
+        output[[output_name]] <- conditional_filter_input(df, col_name, local_filter_label, session)
+      })
+    }
+
+    # Reactive Dataframe ####
+    reactive_over_time_plot_df <- reactive({
+      # Pause plot execution while input values evaluate. This eliminates an error message.
+      req(input$grouping_selection)
+
+      plot_df <- df %>%
+        tidyr::unite(grouping, input$grouping_selection, remove = FALSE, sep = " | ") %>%
+        dplyr::filter(
+          dplyr::across(
+            input$filter_control,
+            ~ .x %in% input[[glue::glue("{dplyr::cur_column()}_filter")]]
+          )
+        ) %>%
+        dplyr::group_by(grouping, !!rlang::sym(time_col)) %>%
+        dplyr::summarize(y_plot = metric_summarization_function(!!rlang::sym(metric_col))) %>%
+        dplyr::mutate(x_plot = !!rlang::sym(time_col)) %>%
+        dplyr::ungroup()
+      # Pause plot execution if df has no values. This eliminates an error message.
+      req(nrow(plot_df) > 0)
+      return(plot_df)
+    })
+
+    # Plot Rendering ####
+    output$over_time_line_chart <- plotly::renderPlotly({
+      reactive_plot_df <- reactive_over_time_plot_df()
+
+      x_is_continuous <- !is.character(reactive_plot_df[["x_plot"]])
+      if (!x_is_continuous) {
+        reactive_plot_df[["x_plot"]] <- as.factor(reactive_plot_df[["x_plot"]])
+      }
+
+      group_label <- ngram::concatenate(
+        names(grouping_cols)[grouping_cols %in% input$grouping_selection],
+        collapse = " | "
+      )
+
+      generate_line_chart(reactive_plot_df,
+        x = x_plot,
+        y = y_plot,
+        x_is_continuous = x_is_continuous,
+        grouping = grouping,
+        x_label = names(time_col),
+        y_label = names(metric_col),
+        group_labeling = paste("Grouping Label: ", group_label,
+          "</br>",
+          "Grouping Value: ", grouping,
+          "</br>",
+          sep = ""
+        ),
+        legend_title = group_label
+      )
+    })
+  })
+}
