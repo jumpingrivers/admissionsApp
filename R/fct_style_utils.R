@@ -74,3 +74,48 @@ colors_value_boxes <- function() {
     "#03518c"
   )
 }
+
+#' Utah Tech Color Palette
+#'
+#' A rotating color palette from colors defined by the Utah Tech University branding guide.
+#'
+#' @param n The number of colors to include from the color palette.
+#'
+#' @return A vector of hex colors, of length n.
+#' @export
+#'
+#' @examples
+#' ut_color_palette(2)
+#' ut_color_palette(100)
+ut_color_palette <- function(n) {
+  brookes_blues <- c(
+    "#003058",
+    "#004782",
+    "#005eac",
+    "#0075d7",
+    "#028cff",
+    "#2c9fff"
+  )
+
+  rock_reds <- c(
+    "#BA1C21",
+    "#95161A",
+    "#771215",
+    "#5F0E11",
+    "#4C0B0E",
+    "#3D090B"
+  )
+
+  desert_sands <- c(
+    "#E6CCB3",
+    "#B8A38F",
+    "#938272",
+    "#76685B",
+    "#5E5349",
+    "#4B423A"
+  )
+
+  color_palette <- c(brookes_blues, rock_reds, desert_sands)
+
+  return(rep(color_palette, length.out = n))
+}
