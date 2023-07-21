@@ -4,11 +4,11 @@
 \alias{get_admissions_funnel}
 \title{Read admissions funnel data}
 \usage{
-get_admissions_funnel(method = "from_sql")
+get_admissions_funnel(method = "from_fake_data")
 }
 \arguments{
 \item{method}{Scalar character. Which method should be used to obtain admissions-funnel data?
-Options are `from_sql` and `from_fake_data`.}
+Options are `from_sql` and `from_fake_data` (the default).}
 }
 \value{
 data-frame containing the admissions-funnel data.

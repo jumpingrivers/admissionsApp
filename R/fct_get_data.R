@@ -44,11 +44,11 @@ get_daily_enrollment <- function(method = "from_fake_data") {
 #' Read admissions funnel data
 #'
 #' @param   method   Scalar character. Which method should be used to obtain admissions-funnel data?
-#'   Options are `from_sql` and `from_fake_data`.
+#'   Options are `from_sql` and `from_fake_data` (the default).
 #'
 #' @return   data-frame containing the admissions-funnel data.
 
-get_admissions_funnel <- function(method = "from_sql") {
+get_admissions_funnel <- function(method = "from_fake_data") {
   method <- match.arg(method, choices = c("from_sql", "from_fake_data"))
 
   if (method == "from_sql") {
