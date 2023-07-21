@@ -30,10 +30,10 @@ get_daily_enrollment <- function(method = "from_fake_data") {
         )
       )
   } else if (method == "from_pin") {
-    pin_user <- get_pin_user()
-    board_rsc <- pins::board_rsconnect()
-    enrollment_path <- glue::glue("{pin_user}/daily_enrollment_pin")
-    daily_enrollment_df <- pins::pin_read(board_rsc, enrollment_path)
+    board <- get_pins_board()
+    pin_owner <- "rsconnectapi!service"
+    pin_name <- "daily_enrollment_pin"
+    daily_enrollment_df <- pins::pin_read(board, name = glue::glue("{pin_owner}/{pin_name}"))
   } else {
     stop("Method for gathering daily enrollment data is not defined.")
   }
