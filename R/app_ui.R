@@ -11,15 +11,15 @@ app_ui <- function(request) {
     shiny::navbarPage(
       title = utShinyMods::get_title_logo(right_aligned_title = "Admissions Dashboard"),
       theme = utShinyMods::get_theme(),
-      tabPanel(
+      shiny::tabPanel(
         "Daily Enrollment",
         utShinyMods::mod_over_time_line_chart_ui("daily_enrollment_line_chart")
       ),
-      tabPanel(
+      shiny::tabPanel(
         "Admission Funnel",
         utShinyMods::mod_sunburst_diagram_ui("admissions_funnel_sunburst_diagram")
       ),
-      tabPanel(
+      shiny::tabPanel(
         "Help",
         utShinyMods::mod_help_ui("help_module")
       )
