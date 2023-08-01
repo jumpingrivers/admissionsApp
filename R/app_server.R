@@ -16,7 +16,7 @@ app_server <- function(input, output, session) {
     method = get_golem_config("data_source")
   )
   admissions_funnel_df <- get_admissions_funnel(
-    method = get_golem_config("data_source")
+    method = "from_fake_data" # get_golem_config("data_source")
   )
 
   waiter::waiter_hide()
