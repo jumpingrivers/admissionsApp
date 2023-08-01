@@ -24,13 +24,15 @@ app_server <- function(input, output, session) {
   # Daily Enrollment Module ####
   utShinyMods::mod_over_time_line_chart_server("daily_enrollment_line_chart",
     df = daily_enrollment_df,
-    time_col = c("Days Until Class Start" = "days_to_class_start"),
+    # use days_to_class_start in LaVoy's branch
+    time_col = c("Days Until Class Start" = "days_to_term_start"),
     metric_col = c("Headcount" = "student_id"),
     metric_summarization_function = dplyr::n_distinct,
     grouping_cols = c(
-      "Term" = "term_desc",
+      # "Term" = "term_desc",
       "Season" = "season",
-      "Academic Year" = "academic_year",
+      # "Academic Year" = "academic_year",
+      "Year" = "year",
       "College" = "college",
       "Department" = "department",
       "Program" = "program",
@@ -38,9 +40,10 @@ app_server <- function(input, output, session) {
       "Race/Ethnicity" = "race_ethnicity"
     ),
     filter_cols = c(
-      "Term" = "term_desc",
+      # "Term" = "term_desc",
       "Season" = "season",
-      "Academic Year" = "academic_year",
+      # "Academic Year" = "academic_year",
+      "Year" = "year",
       "College" = "college",
       "Department" = "department",
       "Program" = "program",
