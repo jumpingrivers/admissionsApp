@@ -53,11 +53,7 @@ app_server <- function(input, output, session) {
     module_title = "Daily Enrollment"
   )
 
-  utShinyMods::mod_sunburst_diagram_server("admissions_funnel_sunburst_diagram",
-    df = admissions_funnel_df,
-    step_cols = c("prospect_status", "admit_status"),
-    module_title = "Admissions Funnel"
-  )
+  mod_sunburst_server("sunburst_1", admissions_funnel_df)
 
   utShinyMods::mod_help_server("help_module")
 }
