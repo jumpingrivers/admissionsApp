@@ -22,4 +22,3 @@ docs
 ^app\.R$
 ^rsconnect$
 _\.new\.png$
-sandbox/
