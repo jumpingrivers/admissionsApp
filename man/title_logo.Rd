@@ -4,8 +4,16 @@
 \alias{title_logo}
 \title{Create title logo}
 \usage{
-title_logo()
+title_logo(right_aligned_title, alt = NULL)
+}
+\arguments{
+\item{right_aligned_title}{Text for the title. This is displayed right-aligned on the app.}
+
+\item{alt}{Alt text for the logo.}
+}
+\value{
+Returns UT logo with correct dimensions for app title.
 }
 \description{
-Returns UT logo with correct dimensions for app title.
+Create title logo
 }

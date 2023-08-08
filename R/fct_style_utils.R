@@ -1,7 +1,12 @@
 #' Create title logo
 #'
-#' Returns UT logo with correct dimensions for app title.
-title_logo <- function() {
+#' @param   right_aligned_title   Text for the title. This is displayed right-aligned on the app.
+#' @param   alt   Alt text for the logo.
+#'
+#' @return Returns UT logo with correct dimensions for app title.
+
+title_logo <- function(right_aligned_title,
+                       alt = NULL) {
   shiny::div(
     style = "text-align: justify; width:150;",
     shiny::tags$img(
@@ -12,9 +17,10 @@ title_logo <- function() {
       src = "www/ie_logo.png",
       width = "170",
       height = "50",
-      alt = "UT Data"
+      alt = alt
     ),
-    shiny::h3("Admissions dashboard",
+    shiny::h3(
+      right_aligned_title,
       style = "position: absolute; right: 1%; top: 0%; margin-top: 10px;"
     )
   )

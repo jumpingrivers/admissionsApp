@@ -9,7 +9,10 @@ app_ui <- function(request) {
       golem_add_external_resources()
     ),
     shiny::navbarPage(
-      title = utShinyMods::get_title_logo(right_aligned_title = "Admissions Dashboard"),
+      title = title_logo(
+        right_aligned_title = "Admissions Dashboard",
+        alt = "UT Data"
+      ),
       theme = utShinyMods::get_theme(),
       shiny::tabPanel(
         "Daily Enrollment",
