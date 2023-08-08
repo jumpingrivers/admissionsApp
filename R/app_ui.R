@@ -13,7 +13,7 @@ app_ui <- function(request) {
         right_aligned_title = "Admissions Dashboard",
         alt = "UT Data"
       ),
-      theme = utShinyMods::get_theme(),
+      theme = litera_theme(),
       shiny::tabPanel(
         "Daily Enrollment",
         mod_over_time_line_chart_ui("daily_enrollment_line_chart")
