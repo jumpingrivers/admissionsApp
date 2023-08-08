@@ -9,7 +9,6 @@ Depends:
     R (>= 4.0)
 Imports: 
     bslib,
-    cli,
     config (>= 0.3.1),
     dplyr,
     ggplot2,
@@ -23,11 +22,8 @@ Imports:
     plotly,
     reactable,
     rlang,
-    scales,
     shiny (>= 1.7.1),
-    shinycssloaders,
     shinyWidgets,
-    stringr,
     tidyr,
     utHelpR (>= 0.0.0.9000),
     utShinyMods (>= 0.0.0.9000),
@@ -35,6 +31,7 @@ Imports:
     waiter
 Suggests:
     shinytest2,
+    stringr,
     testthat (>= 3.0.0)
 Remotes: 
     dsu-effectiveness/utHelpR,
