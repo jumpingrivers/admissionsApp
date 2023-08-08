@@ -76,6 +76,54 @@ generate_line_chart <- function(df,
   return(plot)
 }
 
+#' Prepare a data-frame to provide data for enrollment line charts
+#'
+#' This adds a column 'grouping' (defining the lines presented in the plot) and filters rows. Then
+#' summarises enrollment for each time point.
+#'
+#' @param   df   A data-frame.
+#' @param   grouping_selection   The collection of columns that define the groups to be presented
+#'   on the enrollment chart. These are collapsed into a single column 'grouping'.
+#' @param   filter_control,filter_values   These define how the rows of `df` are filtered. For each
+#'   `df` column-name in `filter_control`, there is a `<column_name>_filter` entry in
+#'   `filter_values`. Only rows that match all of the filters will be kept in the summarised output.
+#' @param   time_col   Which of the columns defines the enrollment timepoint?
+#' @param   metric_col   Which of the columns defines the enrollment metric?
+#' @param   metric_summarization_function   How should the entries in `metric_col` be combined?
+
+get_enrollment_over_time_df <- function(df,
+                                        grouping_selection,
+                                        filter_control,
+                                        filter_values,
+                                        time_col,
+                                        metric_col,
+                                        metric_summarization_function) {
+  rowwise_true <- function(x) {
+    purrr::reduce(x, `&`)
+  }
+
+  df %>%
+    tidyr::unite(
+      "grouping",
+      dplyr::all_of(grouping_selection),
+      remove = FALSE,
+      sep = " | "
+    ) %>%
+    dplyr::filter(
+      # This is a hack because `if_all()` doesn't work with `cur_column()` as of 2023-08-08
+      rowwise_true(
+        dplyr::across(
+          dplyr::all_of(filter_control),
+          ~ .x %in% filter_values[[glue::glue("{dplyr::cur_column()}_filter")]]
+        )
+      )
+    ) %>%
+    dplyr::group_by(.data[["grouping"]], !!rlang::sym(time_col)) %>%
+    dplyr::summarize(y_plot = metric_summarization_function(!!rlang::sym(metric_col))) %>%
+    dplyr::mutate(x_plot = !!rlang::sym(time_col)) %>%
+    dplyr::ungroup()
+}
+
 #' Create conditional filter input
 #'
 #' Create conditional panel containing pickerInput
