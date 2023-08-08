@@ -27,7 +27,6 @@ Imports:
     shinyWidgets,
     tidyr,
     utHelpR (>= 0.0.0.9000),
-    utShinyMods (>= 0.0.0.9000),
     utVizSunburst (>= 0.4.1),
     waiter
 Suggests:

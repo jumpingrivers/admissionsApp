@@ -40,22 +40,6 @@
       ],
       "Hash": "b2866e62bab9378c3cc9476a1954226b"
     },
-    "DT": {
-      "Package": "DT",
-      "Version": "0.28",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "crosstalk",
-        "htmltools",
-        "htmlwidgets",
-        "jquerylib",
-        "jsonlite",
-        "magrittr",
-        "promises"
-      ],
-      "Hash": "ab745834dfae7eaf71dd0b90f3b66759"
-    },
     "KernSmooth": {
       "Package": "KernSmooth",
       "Version": "2.23-21",
@@ -2048,68 +2032,6 @@
       ],
       "Hash": "1e391768fd026a702a9a8cecfcdc72df"
     },
-    "utShinyMods": {
-      "Package": "utShinyMods",
-      "Version": "0.0.0.9000",
-      "Source": "GitHub",
-      "Remotes": "dsu-effectiveness/utVizSankey, dsu-effectiveness/utVizSunburst",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "utShinyMods",
-      "RemoteUsername": "dsu-effectiveness",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "12c8a6b1b687183edf103ed17a7b9523e0a71b3b",
-      "Requirements": [
-        "DT",
-        "R",
-        "bslib",
-        "cli",
-        "config",
-        "dplyr",
-        "ggplot2",
-        "glue",
-        "golem",
-        "htmlwidgets",
-        "janitor",
-        "magrittr",
-        "ngram",
-        "plotly",
-        "purrr",
-        "reactable",
-        "readr",
-        "rlang",
-        "scales",
-        "shiny",
-        "shinyWidgets",
-        "stringr",
-        "tidyr",
-        "utVizSankey",
-        "utVizSunburst",
-        "waiter",
-        "writexl"
-      ],
-      "Hash": "7c44850cd0f6a1b95984f4c0b4f9f264"
-    },
-    "utVizSankey": {
-      "Package": "utVizSankey",
-      "Version": "0.3.2",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "utVizSankey",
-      "RemoteUsername": "dsu-effectiveness",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "455f54e8606022674736cd65d0230c32fa569c17",
-      "Requirements": [
-        "R",
-        "gplots",
-        "htmlwidgets",
-        "magrittr",
-        "rlang",
-        "shiny"
-      ],
-      "Hash": "643958d1e49d159e608d625ba243c8c1"
-    },
     "utVizSunburst": {
       "Package": "utVizSunburst",
       "Version": "0.4.1",
@@ -2265,13 +2187,6 @@
         "stats"
       ],
       "Hash": "c0e49a9760983e81e55cdd9be92e7182"
-    },
-    "writexl": {
-      "Package": "writexl",
-      "Version": "1.4.2",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Hash": "43da939eaf6681c88eba977b9012dad9"
     },
     "xfun": {
       "Package": "xfun",
