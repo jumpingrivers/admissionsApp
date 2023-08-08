@@ -124,18 +124,16 @@ mod_over_time_line_chart_server <- function(id,
       # Pause plot execution while input values evaluate. This eliminates an error message.
       shiny::req(input$grouping_selection)
 
-      plot_df <- df %>%
-        tidyr::unite(grouping, input$grouping_selection, remove = FALSE, sep = " | ") %>%
-        dplyr::filter(
-          dplyr::across(
-            input$filter_control,
-            ~ .x %in% input[[glue::glue("{dplyr::cur_column()}_filter")]]
-          )
-        ) %>%
-        dplyr::group_by(grouping, !!rlang::sym(time_col)) %>%
-        dplyr::summarize(y_plot = metric_summarization_function(!!rlang::sym(metric_col))) %>%
-        dplyr::mutate(x_plot = !!rlang::sym(time_col)) %>%
-        dplyr::ungroup()
+      plot_df <- get_enrollment_over_time_df(
+        df,
+        grouping_selection = input[["grouping_selection"]],
+        filter_control = input[["filter_control"]],
+        filter_values = input,
+        time_col = time_col,
+        metric_col = metric_col,
+        metric_summarization_function = metric_summarization_function
+      )
+
       # Pause plot execution if df has no values. This eliminates an error message.
       shiny::req(nrow(plot_df) > 0)
       return(plot_df)
