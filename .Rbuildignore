@@ -15,6 +15,7 @@ $run_dev.*
 ^app\.R$
 ^data-raw$
 ^dev$
+^manifest.json$
 ^renv$
 ^renv\.lock$
 ^rsconnect$
