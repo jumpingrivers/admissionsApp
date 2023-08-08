@@ -9,17 +9,15 @@
 #' @importFrom shiny NS tagList
 mod_sunburst_ui <- function(id) {
   ns <- shiny::NS(id) # nolint
-  shiny::tabPanel(
-    "Sunburst",
-    shiny::fluidRow(
-      shiny::column(
-        width = 6,
-        utVizSunburst::sunburstOutput(ns("sunburst"))
-      ),
-      shiny::column(
-        width = 6,
-        reactable::reactableOutput(ns("table"))
-      )
+
+  shiny::fluidRow(
+    shiny::column(
+      width = 6,
+      utVizSunburst::sunburstOutput(ns("sunburst"))
+    ),
+    shiny::column(
+      width = 6,
+      reactable::reactableOutput(ns("table"))
     )
   )
 }

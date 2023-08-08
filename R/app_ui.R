@@ -15,7 +15,10 @@ app_ui <- function(request) {
         "Daily Enrollment",
         utShinyMods::mod_over_time_line_chart_ui("daily_enrollment_line_chart")
       ),
-      mod_sunburst_ui("sunburst_1"),
+      shiny::tabPanel(
+        "Admission Funnel",
+        mod_sunburst_ui("sunburst_1")
+      ),
       shiny::tabPanel(
         "Help",
         utShinyMods::mod_help_ui("help_module")
