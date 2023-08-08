@@ -1153,17 +1153,6 @@
       ],
       "Hash": "6dfe8bf774944bd5595785e3229d8771"
     },
-    "ngram": {
-      "Package": "ngram",
-      "Version": "3.2.2",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "methods"
-      ],
-      "Hash": "6b2ac63626633d4fe5ce316837a74301"
-    },
     "nlme": {
       "Package": "nlme",
       "Version": "3.1-162",

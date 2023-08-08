@@ -150,7 +150,7 @@ mod_over_time_line_chart_server <- function(id,
         reactive_plot_df[["x_plot"]] <- as.factor(reactive_plot_df[["x_plot"]])
       }
 
-      group_label <- ngram::concatenate(
+      group_label <- paste(
         names(grouping_cols)[grouping_cols %in% input$grouping_selection],
         collapse = " | "
       )
