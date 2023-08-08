@@ -29,9 +29,11 @@ Imports:
     utVizSunburst (>= 0.4.1),
     waiter
 Suggests:
+    purrr,
     shinytest2,
     stringr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tibble
 Remotes: 
     dsu-effectiveness/utHelpR,
     dsu-effectiveness/utShinyMods,
