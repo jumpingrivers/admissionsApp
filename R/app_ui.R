@@ -21,7 +21,7 @@ app_ui <- function(request) {
       ),
       shiny::tabPanel(
         "Help",
-        utShinyMods::mod_help_ui("help_module")
+        mod_help_ui("help_module")
       )
     )
   )

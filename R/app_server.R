@@ -52,5 +52,5 @@ app_server <- function(input, output, session) {
 
   mod_sunburst_server("sunburst_1", admissions_funnel_df)
 
-  utShinyMods::mod_help_server("help_module")
+  mod_help_server("help_module")
 }
