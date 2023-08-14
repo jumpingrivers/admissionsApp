@@ -23,10 +23,10 @@ get_daily_enrollment <- function(method = "from_fake_data") {
     ) %>%
       dplyr::mutate(
         year = as.character(
-          sample(1978:2022, length(term_id), replace = TRUE)
+          sample(1978:2022, length(.data[["term_id"]]), replace = TRUE)
         ),
         season = as.character(
-          sample(c("Spring", "Fall", "Summer"), length(term_id), replace = TRUE)
+          sample(c("Spring", "Fall", "Summer"), length(.data[["term_id"]]), replace = TRUE)
         )
       )
   } else if (method == "from_pin") {

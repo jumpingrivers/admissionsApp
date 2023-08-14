@@ -9,16 +9,22 @@ app_ui <- function(request) {
       golem_add_external_resources()
     ),
     shiny::navbarPage(
-      title = utShinyMods::get_title_logo(right_aligned_title = "Admissions Dashboard"),
-      theme = utShinyMods::get_theme(),
+      title = title_logo(
+        right_aligned_title = "Admissions Dashboard",
+        alt = "UT Data"
+      ),
+      theme = litera_theme(),
       shiny::tabPanel(
         "Daily Enrollment",
-        utShinyMods::mod_over_time_line_chart_ui("daily_enrollment_line_chart")
+        mod_over_time_line_chart_ui("daily_enrollment_line_chart")
       ),
-      mod_sunburst_ui("sunburst_1"),
+      shiny::tabPanel(
+        "Admission Funnel",
+        mod_sunburst_ui("sunburst_1")
+      ),
       shiny::tabPanel(
         "Help",
-        utShinyMods::mod_help_ui("help_module")
+        mod_help_ui("help_module")
       )
     )
   )

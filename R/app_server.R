@@ -22,7 +22,7 @@ app_server <- function(input, output, session) {
   waiter::waiter_hide()
 
   # Daily Enrollment Module ####
-  utShinyMods::mod_over_time_line_chart_server("daily_enrollment_line_chart",
+  mod_over_time_line_chart_server("daily_enrollment_line_chart",
     df = daily_enrollment_df,
     time_col = c("Days Until Class Start" = "days_to_class_start"),
     metric_col = c("Headcount" = "student_id"),
@@ -52,5 +52,5 @@ app_server <- function(input, output, session) {
 
   mod_sunburst_server("sunburst_1", admissions_funnel_df)
 
-  utShinyMods::mod_help_server("help_module")
+  mod_help_server("help_module")
 }
