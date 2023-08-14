@@ -26,6 +26,7 @@ describe("get_enrollment_over_time_df", {
       lubridate::ymd(c("2023-08-07", "2023-08-08"))
     )
   })
+
   it("summarizes over matching dates", {
     df <- tibble::tibble(
       college = rep("A", 2),
@@ -49,6 +50,31 @@ describe("get_enrollment_over_time_df", {
       )
     )
   })
+
+  it("handles having no filters", {
+    df <- tibble::tibble(
+      college = "A",
+      date = lubridate::ymd("2023-08-07"),
+      enrollment = 1,
+      year = 2023
+    )
+
+    results <- get_enrollment_partial(
+      df,
+      grouping_selection = "college",
+      filter_control = NULL,
+      filter_values = list()
+    )
+
+    expect_equal(
+      results[c("date", "y_plot")],
+      tibble::tibble(
+        date = lubridate::ymd("2023-08-07"),
+        y_plot = 1
+      )
+    )
+  })
+
   it("handles multiple filters", {
     df <- tibble::tibble(
       college = c("A", "A", "B", "B"),

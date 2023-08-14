@@ -99,7 +99,7 @@ get_enrollment_over_time_df <- function(df,
                                         metric_col,
                                         metric_summarization_function) {
   rowwise_true <- function(x) {
-    purrr::reduce(x, `&`)
+    purrr::reduce(x, `&`, .init = TRUE)
   }
 
   df %>%
