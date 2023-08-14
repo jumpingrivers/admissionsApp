@@ -139,8 +139,8 @@ mod_over_time_line_chart_server <- function(id,
       return(plot_df)
     })
 
-    # Plot Rendering ####
-    output$over_time_line_chart <- plotly::renderPlotly({
+    # Enrollment chart creation ####
+    enrollment_chart <- shiny::reactive({
       reactive_plot_df <- reactive_over_time_plot_df()
 
       x_is_continuous <- !is.character(reactive_plot_df[["x_plot"]])
@@ -153,7 +153,8 @@ mod_over_time_line_chart_server <- function(id,
         collapse = " | "
       )
 
-      generate_line_chart(reactive_plot_df,
+      generate_line_chart(
+        reactive_plot_df,
         x = .data[["x_plot"]],
         y = .data[["y_plot"]],
         x_is_continuous = x_is_continuous,
@@ -169,5 +170,8 @@ mod_over_time_line_chart_server <- function(id,
         legend_title = group_label
       )
     })
+
+    # Enrollment chart rendering ####
+    output$over_time_line_chart <- plotly::renderPlotly(enrollment_chart())
   })
 }
