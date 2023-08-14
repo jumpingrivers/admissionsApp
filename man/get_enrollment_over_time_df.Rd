@@ -24,9 +24,9 @@ on the enrollment chart. These are collapsed into a single column 'grouping'.}
 `df` column-name in `filter_control`, there is a `<column_name>_filter` entry in
 `filter_values`. Only rows that match all of the filters will be kept in the summarised output.}
 
-\item{time_col}{Which of the columns defines the enrollment timepoint?}
+\item{time_col}{Scalar character. Which of the columns defines the enrollment timepoint?}
 
-\item{metric_col}{Which of the columns defines the enrollment metric?}
+\item{metric_col}{Scalar character. Which of the columns defines the enrollment metric?}
 
 \item{metric_summarization_function}{How should the entries in `metric_col` be combined?}
 }

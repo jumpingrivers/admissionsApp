@@ -87,8 +87,8 @@ generate_line_chart <- function(df,
 #' @param   filter_control,filter_values   These define how the rows of `df` are filtered. For each
 #'   `df` column-name in `filter_control`, there is a `<column_name>_filter` entry in
 #'   `filter_values`. Only rows that match all of the filters will be kept in the summarised output.
-#' @param   time_col   Which of the columns defines the enrollment timepoint?
-#' @param   metric_col   Which of the columns defines the enrollment metric?
+#' @param   time_col   Scalar character. Which of the columns defines the enrollment timepoint?
+#' @param   metric_col   Scalar character. Which of the columns defines the enrollment metric?
 #' @param   metric_summarization_function   How should the entries in `metric_col` be combined?
 
 get_enrollment_over_time_df <- function(df,
@@ -119,8 +119,8 @@ get_enrollment_over_time_df <- function(df,
       )
     ) %>%
     dplyr::group_by(.data[["grouping"]], !!rlang::sym(time_col)) %>%
-    dplyr::summarize(y_plot = metric_summarization_function(!!rlang::sym(metric_col))) %>%
-    dplyr::mutate(x_plot = !!rlang::sym(time_col)) %>%
+    dplyr::summarize(y_plot = metric_summarization_function(.data[[metric_col]])) %>%
+    dplyr::mutate(x_plot = .data[[time_col]]) %>%
     dplyr::ungroup()
 }
 
