@@ -135,14 +135,14 @@ mod_over_time_line_chart_server <- function(id,
     #     grouping-selection and would attempt to trigger making the line-chart before the grouping
     #     selection is ready
     output$create_enrollment_ui <- shiny::renderUI({
-      req(input$grouping_selection)
+      shiny::req(input$grouping_selection)
       shiny::actionButton(ns("show_enrollment"), "Update admissions chart")
     })
 
     # Reactive Dataframe ####
     reactive_over_time_plot_df <- shiny::reactive({
       # Pause plot execution while input values evaluate. This eliminates an error message.
-      shiny::req(input$grouping_selection)
+      shiny::req(isolate(input$grouping_selection))
 
       plot_df <- get_enrollment_over_time_df(
         df,
@@ -181,7 +181,7 @@ mod_over_time_line_chart_server <- function(id,
         x = .data[["x_plot"]],
         y = .data[["y_plot"]],
         x_is_continuous = x_is_continuous,
-        grouping = grouping,
+        grouping = grouping, # name of a column
         x_label = names(time_col),
         y_label = names(metric_col),
         group_labeling = paste("Grouping Label: ", group_label,
