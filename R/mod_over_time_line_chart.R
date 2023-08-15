@@ -21,7 +21,8 @@ mod_over_time_line_chart_ui <- function(id) {
     shiny::fluidRow(
       shiny::column(2, shiny::tagList(
         shiny::uiOutput(ns("grouping_selection_ui")),
-        shiny::uiOutput(ns("filter_control_ui"))
+        shiny::uiOutput(ns("filter_control_ui")),
+        shiny::uiOutput(ns("create_enrollment_ui"))
       )),
       shiny::column(
         10,
@@ -109,6 +110,7 @@ mod_over_time_line_chart_server <- function(id,
       })
       do.call(tagList, list(filter_control, filter_displays))
     })
+
     for (filter_label in names(filter_cols)) {
       local({
         local_filter_cols <- filter_cols
@@ -119,6 +121,24 @@ mod_over_time_line_chart_server <- function(id,
       })
     }
 
+    # This action button controls when the line-chart is regenerated
+    # - This prevents recomputation of the data-frame and plot for the line-chart when the user
+    #   incompletely selects the parameters for their chosen line-chart
+    # - The reason the button is added using renderUI/uiOutput rather than directly adding the
+    #   button to the UI function (mod_over_time_line_chart_ui()) are three-fold:
+    #   - a grouping-selection must be specified before it is possible to generate the data-frame
+    #     for the line-chart
+    #   - changes to the grouping-selection should not directly lead to a newly-generated chart
+    #   - we want to generate a default plot when the app starts (i.e., the first chart is generated
+    #     without clicking the actionButton)
+    #   - so if the actionButton were added in *_ui() it would be ready before the
+    #     grouping-selection and would attempt to trigger making the line-chart before the grouping
+    #     selection is ready
+    output$create_enrollment_ui <- shiny::renderUI({
+      req(input$grouping_selection)
+      shiny::actionButton(ns("show_enrollment"), "Update admissions chart")
+    })
+
     # Reactive Dataframe ####
     reactive_over_time_plot_df <- shiny::reactive({
       # Pause plot execution while input values evaluate. This eliminates an error message.
@@ -126,9 +146,9 @@ mod_over_time_line_chart_server <- function(id,
 
       plot_df <- get_enrollment_over_time_df(
         df,
-        grouping_selection = input[["grouping_selection"]],
-        filter_control = input[["filter_control"]],
-        filter_values = input,
+        grouping_selection = isolate(input[["grouping_selection"]]),
+        filter_control = isolate(input[["filter_control"]]),
+        filter_values = isolate(input),
         time_col = time_col,
         metric_col = metric_col,
         metric_summarization_function = metric_summarization_function
@@ -137,7 +157,10 @@ mod_over_time_line_chart_server <- function(id,
       # Pause plot execution if df has no values. This eliminates an error message.
       shiny::req(nrow(plot_df) > 0)
       return(plot_df)
-    })
+    }) %>%
+      # Display the default enrollment chart when the app loads
+      # But only update it when the user clicks "Create admissions chart"
+      shiny::bindEvent(input$show_enrollment, ignoreNULL = FALSE)
 
     # Enrollment chart creation ####
     enrollment_chart <- shiny::reactive({
@@ -149,7 +172,7 @@ mod_over_time_line_chart_server <- function(id,
       }
 
       group_label <- paste(
-        names(grouping_cols)[grouping_cols %in% input$grouping_selection],
+        names(grouping_cols)[grouping_cols %in% isolate(input$grouping_selection)],
         collapse = " | "
       )
 
