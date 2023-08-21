@@ -66,7 +66,9 @@ generate_line_chart <- function(df,
 
   if (lin_reg) {
     ggplot_object <- ggplot_object +
-      ggplot2::geom_smooth(method = "lm", fullrange = TRUE, linetype = "dashed", size = .5, se = F)
+      ggplot2::geom_smooth(
+        method = "lm", fullrange = TRUE, linetype = "dashed", size = .5, se = FALSE
+      )
   }
 
   plot <- plotly::ggplotly(ggplot_object, tooltip = c("text")) %>%
