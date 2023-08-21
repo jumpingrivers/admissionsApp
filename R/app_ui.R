@@ -18,10 +18,16 @@ app_ui <- function(request) {
         "Daily Enrollment",
         mod_over_time_line_chart_ui("daily_enrollment_line_chart")
       ),
-      shiny::tabPanel(
-        "Admission Funnel",
-        mod_sunburst_ui("sunburst_1")
-      ),
+      if (get_golem_config("show_sunburst")) {
+        # The data that will be presented in the sunburst plot/page has yet to be finalized.
+        # Hence, the page is being hidden until it is required in the app.
+        shiny::tabPanel(
+          "Admission Funnel",
+          mod_sunburst_ui("sunburst_1")
+        )
+      } else {
+        NULL
+      },
       shiny::tabPanel(
         "Help",
         mod_help_ui("help_module")

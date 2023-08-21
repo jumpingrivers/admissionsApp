@@ -7,13 +7,12 @@
 #' @export
 #' @importFrom shiny shinyApp
 #' @importFrom golem with_golem_options
-run_app = function(
-  onStart = NULL, # nolint
-  options = list(),
-  enableBookmarking = NULL, # nolint
-  uiPattern = "/", # nolint
-  ...
-) {
+run_app <- function(
+    onStart = NULL, # nolint
+    options = list(),
+    enableBookmarking = NULL, # nolint
+    uiPattern = "/", # nolint
+    ...) {
   golem::with_golem_options(
     app = shiny::shinyApp(
       ui = app_ui,
