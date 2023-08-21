@@ -1,3 +1,5 @@
+# nolint start: commented_code_linter.
+
 #' over_time_line_chart UI Function
 #'
 #' To be copied in the UI
@@ -13,6 +15,8 @@
 #' @importFrom shiny NS tagList
 #'
 #' @export
+
+# nolint end
 
 mod_over_time_line_chart_ui <- function(id) {
   ns <- NS(id)
@@ -30,6 +34,8 @@ mod_over_time_line_chart_ui <- function(id) {
     )
   )
 }
+
+# nolint start: commented_code_linter.
 
 #' over_time_line_chart Server Functions
 #'
@@ -56,6 +62,8 @@ mod_over_time_line_chart_ui <- function(id) {
 #' @param   module_sub_title   Subtitle for the chart.
 #'
 #' @export
+
+# nolint end
 
 mod_over_time_line_chart_server <- function(id,
                                             df,
