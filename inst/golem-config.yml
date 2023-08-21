@@ -3,11 +3,16 @@ default:
   golem_version: 0.1.0
   app_prod: no
   data_source: from_fake_data
+  # feature-flags
+  show_sunburst: no
 production:
   app_prod: yes
   data_source: from_pin
-local-staging:
+staging:
   data_source: from_pin
+  show_sunburst: yes
+local-staging:
+  inherits: staging
   connect_server: !expr Sys.getenv("CONNECT_SERVER", "https://rs-connect.utahtech.edu")
   connect_account: !expr Sys.getenv("CONNECT_ACCOUNT", "undefined")
   connect_api_key: !expr Sys.getenv("CONNECT_API_KEY", "undefined")
