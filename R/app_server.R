@@ -15,8 +15,10 @@ app_server <- function(input, output, session) {
   daily_enrollment_df <- get_daily_enrollment(
     method = get_golem_config("data_source")
   )
+  # When a pin is available for the admissions-funnel data, replace the 'method'
+  # with `get_colem_config("data_source")`
   admissions_funnel_df <- get_admissions_funnel(
-    method = "from_fake_data" # get_golem_config("data_source")
+    method = "from_fake_data"
   )
 
   waiter::waiter_hide()
