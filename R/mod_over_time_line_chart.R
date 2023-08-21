@@ -21,7 +21,8 @@ mod_over_time_line_chart_ui <- function(id) {
     shiny::fluidRow(
       shiny::column(2, shiny::tagList(
         shiny::uiOutput(ns("grouping_selection_ui")),
-        shiny::uiOutput(ns("filter_control_ui"))
+        shiny::uiOutput(ns("filter_control_ui")),
+        shiny::uiOutput(ns("create_enrollment_ui"))
       )),
       shiny::column(
         10,
@@ -109,6 +110,7 @@ mod_over_time_line_chart_server <- function(id,
       })
       do.call(tagList, list(filter_control, filter_displays))
     })
+
     for (filter_label in names(filter_cols)) {
       local({
         local_filter_cols <- filter_cols
@@ -119,30 +121,49 @@ mod_over_time_line_chart_server <- function(id,
       })
     }
 
+    # This action button controls when the line-chart is regenerated
+    # - This prevents recomputation of the data-frame and plot for the line-chart when the user
+    #   incompletely selects the parameters for their chosen line-chart
+    # - The reason the button is added using renderUI/uiOutput rather than directly adding the
+    #   button to the UI function (mod_over_time_line_chart_ui()) are three-fold:
+    #   - a grouping-selection must be specified before it is possible to generate the data-frame
+    #     for the line-chart
+    #   - changes to the grouping-selection should not directly lead to a newly-generated chart
+    #   - we want to generate a default plot when the app starts (i.e., the first chart is generated
+    #     without clicking the actionButton)
+    #   - so if the actionButton were added in *_ui() it would be ready before the
+    #     grouping-selection and would attempt to trigger making the line-chart before the grouping
+    #     selection is ready
+    output$create_enrollment_ui <- shiny::renderUI({
+      shiny::req(input$grouping_selection)
+      shiny::actionButton(ns("show_enrollment"), "Update admissions chart")
+    })
+
     # Reactive Dataframe ####
     reactive_over_time_plot_df <- shiny::reactive({
       # Pause plot execution while input values evaluate. This eliminates an error message.
-      shiny::req(input$grouping_selection)
+      shiny::req(isolate(input$grouping_selection))
 
-      plot_df <- df %>%
-        tidyr::unite(grouping, input$grouping_selection, remove = FALSE, sep = " | ") %>%
-        dplyr::filter(
-          dplyr::across(
-            input$filter_control,
-            ~ .x %in% input[[glue::glue("{dplyr::cur_column()}_filter")]]
-          )
-        ) %>%
-        dplyr::group_by(grouping, !!rlang::sym(time_col)) %>%
-        dplyr::summarize(y_plot = metric_summarization_function(!!rlang::sym(metric_col))) %>%
-        dplyr::mutate(x_plot = !!rlang::sym(time_col)) %>%
-        dplyr::ungroup()
+      plot_df <- get_enrollment_over_time_df(
+        df,
+        grouping_selection = isolate(input[["grouping_selection"]]),
+        filter_control = isolate(input[["filter_control"]]),
+        filter_values = isolate(input),
+        time_col = time_col,
+        metric_col = metric_col,
+        metric_summarization_function = metric_summarization_function
+      )
+
       # Pause plot execution if df has no values. This eliminates an error message.
       shiny::req(nrow(plot_df) > 0)
       return(plot_df)
-    })
+    }) %>%
+      # Display the default enrollment chart when the app loads
+      # But only update it when the user clicks "Create admissions chart"
+      shiny::bindEvent(input$show_enrollment, ignoreNULL = FALSE)
 
-    # Plot Rendering ####
-    output$over_time_line_chart <- plotly::renderPlotly({
+    # Enrollment chart creation ####
+    enrollment_chart <- shiny::reactive({
       reactive_plot_df <- reactive_over_time_plot_df()
 
       x_is_continuous <- !is.character(reactive_plot_df[["x_plot"]])
@@ -151,15 +172,16 @@ mod_over_time_line_chart_server <- function(id,
       }
 
       group_label <- paste(
-        names(grouping_cols)[grouping_cols %in% input$grouping_selection],
+        names(grouping_cols)[grouping_cols %in% isolate(input$grouping_selection)],
         collapse = " | "
       )
 
-      generate_line_chart(reactive_plot_df,
+      generate_line_chart(
+        reactive_plot_df,
         x = .data[["x_plot"]],
         y = .data[["y_plot"]],
         x_is_continuous = x_is_continuous,
-        grouping = grouping,
+        grouping = grouping, # name of a column
         x_label = names(time_col),
         y_label = names(metric_col),
         group_labeling = paste("Grouping Label: ", group_label,
@@ -171,5 +193,8 @@ mod_over_time_line_chart_server <- function(id,
         legend_title = group_label
       )
     })
+
+    # Enrollment chart rendering ####
+    output$over_time_line_chart <- plotly::renderPlotly(enrollment_chart())
   })
 }

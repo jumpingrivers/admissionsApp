@@ -16,5 +16,5 @@
        8               -119 CHASS           5
        9               -119 COA             8
       10               -119 COB             0
-      # ... with 1,537 more rows
+      # i 1,537 more rows
 
