@@ -1,3 +1,7 @@
+# shinyAdmissions 1.0.0
+
+* Tagged release of the shinyAdmissions app
+
 # shinyAdmissions 0.1.2
 
 * Remove dependency on {utShinyMods}
