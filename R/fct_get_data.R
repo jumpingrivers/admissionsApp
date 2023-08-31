@@ -21,6 +21,7 @@ get_daily_enrollment <- function(method = "from_fake_data") {
     daily_enrollment_df <- readRDS(
       here::here("inst", "app", "fake_data", "daily_enrollment.rds")
     ) %>%
+      tidyr::unnest(cols = "data") %>%
       dplyr::mutate(
         year = as.character(
           sample(1978:2022, length(.data[["term_id"]]), replace = TRUE)
