@@ -16,7 +16,6 @@ Imports:
     golem (>= 0.3.3),
     here,
     htmltools,
-    lubridate,
     magrittr,
     pins,
     plotly,
@@ -29,6 +28,7 @@ Imports:
     utVizSunburst (>= 0.4.1),
     waiter
 Suggests:
+    lubridate,
     purrr,
     shinytest2,
     stringr,
