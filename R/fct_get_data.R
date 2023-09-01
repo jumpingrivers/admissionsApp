@@ -34,7 +34,10 @@ get_daily_enrollment <- function(method = "from_fake_data") {
     board <- get_pins_board()
     pin_owner <- "rsconnectapi!service"
     pin_name <- "daily_enrollment_pin"
-    daily_enrollment_df <- pins::pin_read(board, name = glue::glue("{pin_owner}/{pin_name}"))
+
+    daily_enrollment_df <- board %>%
+      pins::pin_read(name = glue::glue("{pin_owner}/{pin_name}")) %>%
+      tidyr::unnest(cols = "data")
   } else {
     stop("Method for gathering daily enrollment data is not defined.")
   }
