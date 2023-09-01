@@ -23,3 +23,4 @@ _\.new\.png$
 _files$
 dev_history.R
 docs
+^\.github$

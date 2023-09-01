@@ -142,13 +142,13 @@ mod_over_time_line_chart_server <- function(id,
     # Reactive Dataframe ####
     reactive_over_time_plot_df <- shiny::reactive({
       # Pause plot execution while input values evaluate. This eliminates an error message.
-      shiny::req(isolate(input$grouping_selection))
+      shiny::req(shiny::isolate(input$grouping_selection))
 
       plot_df <- get_enrollment_over_time_df(
         df,
-        grouping_selection = isolate(input[["grouping_selection"]]),
-        filter_control = isolate(input[["filter_control"]]),
-        filter_values = isolate(input),
+        grouping_selection = shiny::isolate(input[["grouping_selection"]]),
+        filter_control = shiny::isolate(input[["filter_control"]]),
+        filter_values = shiny::isolate(input),
         time_col = time_col,
         metric_col = metric_col,
         metric_summarization_function = metric_summarization_function
@@ -172,7 +172,7 @@ mod_over_time_line_chart_server <- function(id,
       }
 
       group_label <- paste(
-        names(grouping_cols)[grouping_cols %in% isolate(input$grouping_selection)],
+        names(grouping_cols)[grouping_cols %in% shiny::isolate(input$grouping_selection)],
         collapse = " | "
       )
 
