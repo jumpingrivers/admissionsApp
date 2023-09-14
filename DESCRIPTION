@@ -1,6 +1,6 @@
 Package: shinyAdmissions
 Title: Admissions data application
-Version: 0.1.4
+Version: 0.1.4.9000
 Authors@R:
     person("Jumping", "Rivers", , "info@jumpingrivers.com", role = c("aut", "cre"))
 Description: Admissions data exploration app-as-a-package.

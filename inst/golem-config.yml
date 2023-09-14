@@ -2,9 +2,14 @@ default:
   golem_name: shinyAdmissions
   golem_version: 0.1.0
   app_prod: no
+  # Defines where the daily enrollement data comes from can be: "from_fake_data", "from_sql", "from_pin"
   data_source: from_fake_data
   # feature-flags
   show_sunburst: no
+  # These values are only valid when data_source is "from_pin"
+  pin_owner: "rsconnectapi!service"
+  daily_pin_name: "daily_enrollment_pin"
+  admissions_pin_name: ~
 production:
   app_prod: yes
   data_source: from_pin
