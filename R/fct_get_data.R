@@ -32,8 +32,8 @@ get_daily_enrollment <- function(method = "from_fake_data") {
       )
   } else if (method == "from_pin") {
     board <- get_pins_board()
-    pin_owner <- "rsconnectapi!service"
-    pin_name <- "daily_enrollment_pin"
+    pin_owner <- get_golem_config("pin_owner")
+    pin_name <- get_golem_config("daily_pin_name")
 
     daily_enrollment_df <- board %>%
       pins::pin_read(name = glue::glue("{pin_owner}/{pin_name}")) %>%

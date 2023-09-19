@@ -1,3 +1,7 @@
+# shinyAdmissions (development version)
+
+* Made pin workflow, where daily workflow data is configurable via golem-config
+
 # shinyAdmissions 0.1.4
 
 * Updated the fake `daily_enrollment` dataset that is stored in inst/app/fake_data to contain all
