@@ -1,8 +1,25 @@
 default:
-  golem_name: admissionsApp
-  golem_version: 0.0.0.9000
+  golem_name: shinyAdmissions
+  golem_version: 0.1.0
   app_prod: no
+  # Defines where the daily enrollement data comes from can be: "from_fake_data", "from_sql", "from_pin"
+  data_source: from_fake_data
+  # feature-flags
+  show_sunburst: no
+  # These values are only valid when data_source is "from_pin"
+  pin_owner: "rsconnectapi!service"
+  daily_pin_name: "daily_enrollment_pin"
+  admissions_pin_name: ~
 production:
   app_prod: yes
+  data_source: from_pin
+staging:
+  data_source: from_pin
+  show_sunburst: yes
+local-staging:
+  inherits: staging
+  connect_server: !expr Sys.getenv("CONNECT_SERVER", "https://rs-connect.utahtech.edu")
+  connect_account: !expr Sys.getenv("CONNECT_ACCOUNT", "undefined")
+  connect_api_key: !expr Sys.getenv("CONNECT_API_KEY", "undefined")
 dev:
   golem_wd: !expr here::here()

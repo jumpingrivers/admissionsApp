@@ -3,18 +3,35 @@
 #' @param request Internal parameter for `{shiny}`.
 #'     DO NOT REMOVE.
 #' @noRd
-app_ui = function(request) {
+app_ui <- function(request) {
   shiny::tagList(
     shiny::tags$head(
       golem_add_external_resources()
     ),
     shiny::navbarPage(
-      title = title_logo(),
-      windowTitle = "Admissions Dashboard",
+      title = title_logo(
+        right_aligned_title = "Admissions Dashboard",
+        alt = "UT Data"
+      ),
       theme = litera_theme(),
-      mod_line_ui("line_1"),
-      mod_sunburst_ui("sunburst_1"),
-      mod_help_ui("help_1")
+      shiny::tabPanel(
+        "Daily Enrollment",
+        mod_over_time_line_chart_ui("daily_enrollment_line_chart")
+      ),
+      if (get_golem_config("show_sunburst")) {
+        # The data that will be presented in the sunburst plot/page has yet to be finalized.
+        # Hence, the page is being hidden until it is required in the app.
+        shiny::tabPanel(
+          "Admission Funnel",
+          mod_sunburst_ui("sunburst_1")
+        )
+      } else {
+        NULL
+      },
+      shiny::tabPanel(
+        "Help",
+        mod_help_ui("help_module")
+      )
     )
   )
 }
@@ -23,7 +40,7 @@ app_ui = function(request) {
 #'
 #' This function is internally used to add external
 #' resources inside the Shiny application.
-golem_add_external_resources = function() {
+golem_add_external_resources <- function() {
   golem::add_resource_path(
     "www",
     app_sys("app/www")

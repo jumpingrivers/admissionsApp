@@ -1,3 +1,13 @@
+#' Is the app running on Connect?
+#'
+#' @return   Boolean. TRUE if the app is running on a Connect server.
+
+is_connect <- function() {
+  # This environment variable is "rsconnect" when running on a Connect server.
+  context <- Sys.getenv("R_CONFIG_ACTIVE", "")
+  return(context == "rsconnect")
+}
+
 #' Pipe operator
 #'
 #' See \code{magrittr::\link[magrittr:pipe]{\%>\%}} for details.

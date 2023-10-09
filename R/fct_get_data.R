@@ -1,27 +1,90 @@
-#' Read daily enrollment from pin
+#' Read daily enrollment data for the app
 #'
-#' Read parsed daily enrollment from pin.
-#' Requires env var PIN_USER for path to data file
-#' called daily_enrollment.
-get_daily_enrollment = function() {
-  pin_user = get_pin_user()
-  board_rsc = pins::board_rsconnect()
-  enrollment_path = glue::glue("{pin_user}/enrollment")
-  enrollment = pins::pin_read(board_rsc, enrollment_path)
-  return(enrollment)
+#' Enrollment data is obtained by SQL query, from a pin or using a packaged `.rds` file containing
+#' fake data.
+#'
+#' @param   method   Scalar character. Which method should be used for accessing the enrollment
+#' data? Valid choices: `from_fake_data` (the default; reads from a package-embedded dataset),
+#' `from_sql` (pulls from a database), `from_pin` (pulls from a pin-board on Posit connect).
+#'
+#' @return   data.frame containing the daily enrollment data.
+
+get_daily_enrollment <- function(method = "from_fake_data") {
+  method <- match.arg(method, c("from_fake_data", "from_sql", "from_pin"))
+
+  if (method == "from_sql") {
+    daily_enrollment_df <- utHelpR::get_data_from_sql_file(
+      "daily_enrollment.sql",
+      dsn = "edify", context = "shiny"
+    )
+  } else if (method == "from_fake_data") {
+    daily_enrollment_df <- readRDS(
+      here::here("inst", "app", "fake_data", "daily_enrollment.rds")
+    ) %>%
+      tidyr::unnest(cols = "data") %>%
+      dplyr::mutate(
+        year = as.character(
+          sample(1978:2022, length(.data[["term_id"]]), replace = TRUE)
+        ),
+        season = as.character(
+          sample(c("Spring", "Fall", "Summer"), length(.data[["term_id"]]), replace = TRUE)
+        )
+      )
+  } else if (method == "from_pin") {
+    board <- get_pins_board()
+    pin_owner <- get_golem_config("pin_owner")
+    pin_name <- get_golem_config("daily_pin_name")
+
+    daily_enrollment_df <- board %>%
+      pins::pin_read(name = glue::glue("{pin_owner}/{pin_name}")) %>%
+      tidyr::unnest(cols = "data")
+  } else {
+    stop("Method for gathering daily enrollment data is not defined.")
+  }
+
+  return(daily_enrollment_df)
 }
 
-
-#' Get user for pinned data
+#' Read admissions funnel data
 #'
-#' Read environment variable which sets
-#' which RStudio Connect account pinned data is read from
-get_pin_user = function() {
-  pin_user = Sys.getenv("PIN_USER")
-  if (pin_user == "") {
-    cli::cli_alert_warning("Ensure you have an environment variable called PIN_USER")
-    cli::cli_alert_warning("PIN_USER should be the user where data pins are uploaded")
-    stop("Fix env variable PIN_USER and try again")
+#' @param   method   Scalar character. Which method should be used to obtain admissions-funnel data?
+#'   Options are `from_sql` and `from_fake_data` (the default).
+#'
+#' @return   data-frame containing the admissions-funnel data.
+
+get_admissions_funnel <- function(method = "from_fake_data") {
+  method <- match.arg(method, choices = c("from_sql", "from_fake_data"))
+
+  if (method == "from_sql") {
+    return(
+      utHelpR::get_data_from_sql_file("admissions_funnel.sql", dsn = "edify", context = "shiny")
+    )
+  } else if (method == "from_fake_data") {
+    return(utVizSunburst::admissions)
+  } else {
+    stop("Method for gathering admissions-funnel data is not defined.")
   }
-  return(pin_user)
+}
+
+#' Access the pins board that contains data for this app
+#'
+#' If running outside of Connect, this requires the {pins} server/account/key to be defined in the
+#' {golem} config for this app. These values are typically stored in the environment variables
+#' `CONNECT_SERVER`, `CONNECT_ACCOUNT` and `CONNECT_API_KEY`. They are accessed from the fields
+#' `connect_server`, `connect_account`, `connect_api_key` in the config.
+#'
+#' If running on Connect, the server/account/key information is not used.
+#'
+#' @return   A {pins} board object
+
+get_pins_board <- function() {
+  if (is_connect()) {
+    return(pins::board_connect())
+  }
+
+  pins::board_connect(
+    server = get_golem_config("connect_server"),
+    account = get_golem_config("connect_account"),
+    key = get_golem_config("connect_api_key")
+  )
 }

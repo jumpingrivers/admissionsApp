@@ -2,12 +2,19 @@
 % Please edit documentation in R/fct_get_data.R
 \name{get_daily_enrollment}
 \alias{get_daily_enrollment}
-\title{Read daily enrollment from pin}
+\title{Read daily enrollment data for the app}
 \usage{
-get_daily_enrollment()
+get_daily_enrollment(method = "from_fake_data")
+}
+\arguments{
+\item{method}{Scalar character. Which method should be used for accessing the enrollment
+data? Valid choices: `from_fake_data` (the default; reads from a package-embedded dataset),
+`from_sql` (pulls from a database), `from_pin` (pulls from a pin-board on Posit connect).}
+}
+\value{
+data.frame containing the daily enrollment data.
 }
 \description{
-Read parsed daily enrollment from pin.
-Requires env var PIN_USER for path to data file
-called daily_enrollment.
+Enrollment data is obtained by SQL query, from a pin or using a packaged `.rds` file containing
+fake data.
 }

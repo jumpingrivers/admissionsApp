@@ -1,6 +1,6 @@
-Package: admissionsApp
+Package: shinyAdmissions
 Title: Admissions data application
-Version: 0.0.0.9007
+Version: 0.1.4.9000
 Authors@R:
     person("Jumping", "Rivers", , "info@jumpingrivers.com", role = c("aut", "cre"))
 Description: Admissions data exploration app-as-a-package.
@@ -9,34 +9,35 @@ Depends:
     R (>= 4.0)
 Imports: 
     bslib,
-    cli,
     config (>= 0.3.1),
     dplyr,
     ggplot2,
     glue,
     golem (>= 0.3.3),
-    lubridate,
+    here,
+    htmltools,
     magrittr,
     pins,
     plotly,
     reactable,
     rlang,
-    scales,
     shiny (>= 1.7.1),
-    shinycssloaders,
     shinyWidgets,
-    stringr,
     tidyr,
-    utVizSunburst,
+    utHelpR (>= 0.0.0.9000),
+    utVizSunburst (>= 0.4.1),
     waiter
 Suggests:
-    pkgload,
-    rsconnect,
+    lubridate,
+    purrr,
     shinytest2,
-    testthat (>= 3.0.0)
+    stringr,
+    testthat (>= 3.0.0),
+    tibble
 Remotes: 
-    jumpingrivers/utVizSunburst
+    dsu-effectiveness/utHelpR,
+    dsu-effectiveness/utVizSunburst
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3
